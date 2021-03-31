@@ -41,7 +41,7 @@ const app = require('./src/app');
 //     host: "192.168.99.100",
 //     port: "3306",
 //     user: "root",
-//     password: "pikala",
+//     password: "tibicha",
 //     database: "db_matcha",
 // });
 // // con.connect(function (err) {

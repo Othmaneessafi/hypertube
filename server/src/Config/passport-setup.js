@@ -35,10 +35,10 @@ passport.use(
               let Password = tools.generate(profile._json.id,profile._json.login);
               
               let hashPassword = await bcrypt.hash(Password, 10);
-              tools.download(profile._json.image_url,"./public/images/" + image_url ,function(){})
-              user.Register(profile._json.last_name, profile._json.first_name, (profile._json.login).toLowerCase(), "intra"+profile._json.email, hashPassword, image_url, omni_id);
+              tools.download(profile._json.image_url,"./pics/" + image_url ,function(){})
+              user.Register(profile._json.last_name, profile._json.first_name, (profile._json.login).toLowerCase(), profile._json.email, hashPassword, image_url, omni_id);
               let newuser = await  user.getUser('GetUserByOmni',omni_id);
-              user.Confirmed(newuser.email);
+              user.verif(newuser.email);
               if(newuser)
                 done(null,newuser);
           }
@@ -59,16 +59,16 @@ passport.use(new GoogleStrategy({
   async (accessToken, refreshToken, profile, done) => {
     const [lastname, firstname, username, gmail, omni_id] = 
       [profile.name.familyName, profile.name.givenName, (profile.name.familyName.substr(0,2) + profile.name.givenName).toLowerCase(),
-      "google"+profile.emails[0].value, "Google" + profile.id];
+      profile.emails[0].value, "Google" + profile.id];
       let currentUser = await  user.getUser('GetUserByOmni',omni_id);
       if (!currentUser) {
         let image_name = new Date().toISOString() + username+".jpg";
         let Password = tools.generate(omni_id,username);
         let hashPassword = await bcrypt.hash(Password, 10);
-        tools.download(profile.photos[0].value,"./public/images/" + image_name ,function(){})
+        tools.download(profile.photos[0].value,"./pics/" + image_name ,function(){})
         user.Register(lastname, firstname, username, gmail, hashPassword, image_name, omni_id);
         let newuser = await  user.getUser('GetUserByOmni',omni_id);
-        user.Confirmed(newuser.email);
+        user.verif(newuser.email);
         if(newuser)
           done(null,newuser);
     }
@@ -86,16 +86,16 @@ passport.use(new GitHubStrategy({
 async (accessToken, refreshToken, profile, done) => {
   const [lastname, firstname, username, gmail, omni_id] = 
     [profile.username, profile.username, profile.username.toLowerCase(),
-    "github"+profile.username+"@gmail.com", "github" + profile.id];
+    profile.username+"@gmail.com", "github" + profile.id];
     let currentUser = await  user.getUser('GetUserByOmni',omni_id);
     if (!currentUser) {
       let image_name = new Date().toISOString() + username+".jpg";
       let Password = tools.generate(omni_id,username);
       let hashPassword = await bcrypt.hash(Password, 10);
-      tools.download(profile.photos[0].value,"./public/images/" + image_name ,function(){})
+      tools.download(profile.photos[0].value,"./pics/" + image_name ,function(){})
       user.Register(lastname, firstname, username, gmail, hashPassword, image_name, omni_id);
       let newuser = await  user.getUser('GetUserByOmni',omni_id);
-      user.Confirmed(newuser.email);
+      user.verif(newuser.email);
       if(newuser)
         done(null,newuser);
   }

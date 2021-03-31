@@ -1,193 +1,122 @@
-import React from 'react';
-import { Field } from 'redux-form';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Avatar from '@material-ui/core/Avatar';
-import { Link } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import { Paper } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import textField from '../commun/TextField'
-import LoginImage from "../../image/loginpic.svg";
-import logo from '../../image/logo.png';
-import MyFlash from '../commun/flash'
-import GitHubIcon from '@material-ui/icons/GitHub';
-import { Divider } from '@material-ui/core';
+import React from "react";
+import "./signin.css";
+import Grid from "@material-ui/core/Grid";
+import { Field } from "redux-form";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import textField from "../shared/TextField";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { MDBIcon } from "mdbreact";
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '50%',
-    paddingTop: '5%',
-    marginTop: "35%",
-    paddingBottom: '7%',
-    borderRadius: theme.spacing(3),
-  },
-
-  form: {
-    width: '80%',
-    marginTop: theme.spacing(3),
-  },
-
-  avatar: {
-    margin: theme.spacing(0),
-    width: theme.spacing(15),
-    height: theme.spacing(17),
-  },
-
-  submit: {
-    margin: theme.spacing(0, 0, 1),
-    justifyContent: 'center',
-    width: "100%",
-    borderRadius: theme.spacing(1),
-    textDecoration: 'none',
-    background: "linear-gradient(30deg, #34ada4 10%, #0b777d 90%)",
-    "&:hover": {
-      background: "linear-gradient(30deg, #0b777d 10%, #34ada4 90%)",
-    }
-  },
-  img: {
-    width: 50,
-    height: 50,
-  },
-  login: {
-    color: '#07689f',
-  },
-
-  marginee: {
-    height: "30px",
-  },
-
-  linkee: {
-    textDecoration: 'none', color: '#11888e',
-    "&:hover": {
-      color: '#09015F'
-    }
-  },
-
-  gridPic: {
-    [theme.breakpoints.down(800 + theme.spacing(3) * 2)]: {
-      // marginTop: theme.spacing(8),
-      // marginBottom: theme.spacing(6),
-      // padding: theme.spacing(3),
-      display: "none",
-    },
-    // backgroundImage: `url(${LoginImage})`,
-    backgroundRepeat: 'no-repeat',
-    height: "600px",
-    width: "600px"
-    // marginTop:"330px"
-  },
-  contPic: {
-    alignContent: "center",
-    justifyContent: "center"
-  },
-  logimg: {
-    marginTop: "30%",
-    // marginRight: "10%",
-    // paddingRight: "10%",
-    height: "500px",
-    width: "500px"
-  },
-  marginee2: {
-    [theme.breakpoints.down(800 + theme.spacing(3) * 2)]: {
-      // marginTop: theme.spacing(8),
-      // marginBottom: theme.spacing(6),
-      // padding: theme.spacing(3),
-      display: "none",
-    },
-    width: "100px",
-  },
-
-}));
-
-const Login = (props) => {
+export default function signin(props) {
   const { handleSubmit, status, errors, registredStatus } = props;
-  const classes = useStyles();
   const handleAuth2 = async () => {
-    window.open("http://localhost:3001/auth/github", '_parent');
-  }
+    window.open("http://localhost:3001/auth/github", "_parent");
+  };
   const handleAuth4 = async () => {
-    window.open("http://localhost:3001/auth/google", '_parent');
-  }
+    window.open("http://localhost:3001/auth/google", "_parent");
+  };
   const handleAuth5 = async () => {
-    window.open("http://localhost:3001/auth/42", '_parent');
-  }
+    window.open("http://localhost:3001/auth/42", "_parent");
+  };
   return (
     <>
-      <Grid container className={classes.contPic} >
-        <Grid style={{ display: "flex", flex: "row" }}>
-          <Grid item xs={false} sm={false} md={6} className={classes.gridPic}>
-            {/* <Container maxWidth="xs" style={{backgroundColor:"green",    display: 'flex', alignItems: 'center', justifyContent: 'center',}}> */}
-            <img alt="logimg" src={LoginImage} className={classes.logimg}></img>
-            {/* </Container> */}
+      <Grid
+        container
+        className="signinContainer"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={11} lg={3} container className="loginContainer">
+          <Grid
+            item
+            container
+            xs={12}
+            lg={12}
+            className="loginInputContainer"
+            justify="center"
+            alignItems="center"
+          >
+            <Grid
+              item
+              xs={12}
+              lg={6}
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <h1 className="logo">hypertube</h1>
+              <Field
+                name="username"
+                label="Username"
+                type="text"
+                component={textField}
+                className="loginInput"
+                color="secondary"
+                InputProps={{ className: "loginInput" }}
+                InputLabelProps={{ className: "loginInputLabel" }}
+              />
 
-          </Grid>
-          <div className={classes.marginee2}></div>
-          <Grid item xs={false} sm={false} >
-            <Container maxWidth="xs" >
-              <CssBaseline />
-              <div className={classes.marginee}></div>
-              {registredStatus === 'success' && <MyFlash variant="success" msg={['Registred successfully, check your e-mail']} />}
-              {status === "errorField" && <MyFlash variant="error" msg={[errors]} />}
-              <Paper elevation={10} className={classes.paper}>
-                <Avatar variant="rounded" className={classes.avatar} src={logo} />
-                <Typography className={classes.login} component="h2" variant="h5">
-                  Login</Typography>
-                <form className={classes.form}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                      <Field
-                        name="username"
-                        label="Username"
-                        type="text"
-                        component={textField}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Field
-                        name="password"
-                        type="password"
-                        component={textField}
-                        rows='1'
-                        label="Password"
-                      />
-                    </Grid>
-                    <Grid className={classes.buttongrid} item xs={12}>
-                      <Button onClick={handleSubmit} className={classes.submit} fullWidth variant="contained" type="submit" color="primary" name="submit" value="ok" >Submit</Button>
-                    </Grid>
-                  </Grid>
-                </form>
-                <Grid container justify="flex-end" style={{ justifyContent: 'center' }}>
-                  <Grid item xs={12}>
-                    <Link to="/register" className={classes.linkee}>
-                      Don't have an account? Sign Up
+              <Field
+                name="password"
+                type="password"
+                component={textField}
+                rows="1"
+                label="Password"
+                color="secondary"
+                className="loginInput"
+                InputProps={{ className: "loginInput" }}
+                InputLabelProps={{ className: "loginInputLabel" }}
+              />
+              <div style={{ height: 30 }} />
+              <Button
+                variant="contained"
+                color="secondary"
+                className="loginBtn"
+                type="submit"
+                value="ok"
+                onClick={handleSubmit}
+              >
+                Login
+              </Button>
+              <Link to="/register" style={{ textDecoration: "none" }}>
+                <Button color="secondary" className="registerBtn">
+                  Regiter
+                </Button>
               </Link>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Link to="/forgotPassword" className={classes.linkee}>
-                      Forgot password?</Link>
-                  </Grid>
+              <Link to="/forgotPassword" style={{ textDecoration: "none" }}>
+                <Button color="secondary" className="registerBtn">
+                  Forgot password?
+                </Button>
+                </Link>
+                <Grid item xs={12}>
+                  <Button onClick={handleAuth2}>
+                    <GitHubIcon style={{ width: 40, height: 40, color: "white" }} />
+                  </Button>
+                  <Button onClick={handleAuth4} >
+                    <img
+                      alt="google"
+                      className="omniImg"
+                      src="https://www.pinclipart.com/picdir/big/152-1525702_google-google-g-white-png-clipart.png"
+                      style={{ width: 40, height: 40 }}
+                    />
+                  </Button>
+                  <Button onClick={handleAuth5} >
+                    <img
+                      className="omniImg"
+                      alt="42"
+                      src="https://profile.intra.42.fr/assets/42_logo-7dfc9110a5319a308863b96bda33cea995046d1731cebb735e41b16255106c12.svg"
+                      style={{ width: 40, height: 40 }}
+                    />
+                  </Button>
+                  <MDBIcon fab icon="google" />
                 </Grid>
-              </Paper>
-              <Divider className={classes.divider} />
-              <Button onClick={handleAuth2}><GitHubIcon style={{ width: '50', height: '50' }} /></Button>
-              <Button onClick={handleAuth4}><img className={classes.img} alt="" src='https://cdn2.iconfinder.com/data/icons/font-awesome/1792/google-512.png' /></Button>
-              <Button onClick={handleAuth5}><img className={classes.img} alt="" src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/42_Logo.svg/1200px-42_Logo.svg.png' /></Button>
-              <MDBIcon fab icon="google" />
-            </Container>
+              
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
     </>
   );
 }
-
-export default Login;

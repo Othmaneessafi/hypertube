@@ -40,7 +40,7 @@ services:
         ports:
             - 8000:80
         environment:
-            MYSQL_USER: pikala
-            MYSQL_PASSWORD: pikala
+            MYSQL_USER: tibicha
+            MYSQL_PASSWORD: tibicha
 volumes:
     persistent:

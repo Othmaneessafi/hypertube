@@ -1,65 +1,57 @@
-import React  from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ErrorIcon from '@material-ui/icons/Error';
-import { Link } from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import img from '../../image/logo.png';
-import { Paper } from '@material-ui/core';
+import React from "react";
+import "./index.css";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
-
-const useStyles = makeStyles(theme => ({
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '50%',
-    paddingTop: '5%',
-    marginTop: "35%",
-    paddingBottom: '7%',
-    borderRadius: theme.spacing(3),
-  },
-  avatar: {
-    margin: theme.spacing(3),
-    width: theme.spacing(15),
-    height: theme.spacing(15),
-  },
-  backgroundColorc: {
-    // margin: theme.spacing(20, 'auto'),
-    // background: '#79A3B1',
-    alignContent: "center",
-    justifyContent: "center"
-  },
-}));
-
-const EmailConfirmation = (props) => {
-  const classes = useStyles();
+export default function confirmatinon(props) {
   return (
-    <Container elevation={10} component="main" maxWidth="xs" className={classes.backgroundColorc}>
-      <CssBaseline />
-      {props.status !== 'loading' && <Paper elevation={10} className={classes.paper}>
-      <Avatar variant="rounded" className={classes.avatar} src={img}></Avatar>
-        <Typography style={{margin : "1%"}} variant="h4" color="inherit">
-          Email confirmation
-        </Typography>
-        {props.status === 'error' && <Typography variant="h6" color="error">
-          <ErrorIcon /> There was an error, please retry.
-        </Typography>}
-        {props.status === 'success' && <Typography variant="h6" color="inherit">
-          <CheckCircleIcon /> Email verified successfully.
-          <br/>
-          You can now <Link to="/login"  style={{textDecoration: 'none', color:'#008891'}}>Login</Link>
-        </Typography>}
-      </Paper>}
-      {props.status === "loading" && <div className={classes.paper} style={{marginTop: "300px"}}><CircularProgress color="secondary" /></div>}
-    </Container>
+    <>
+      <Grid
+        container
+        className="errorContainer"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={7} container className="logupContainer">
+          <Grid
+            item
+            container
+            xs={12}
+            lg={6}
+            className="inputContainer"
+            justify="center"
+            alignItems="center"
+          >
+            <Grid
+              item
+              xs={12}
+              lg={12}
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+            >
+              <h1 className="logo">HYPERTUBE</h1>
+              <h3 className="message">
+                You email verif successfully. please click the link below to
+                login.
+              </h3>
+              <Link
+                to="/signin"
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  variant="contained"
+                  className="logupBtn"
+                >
+                  Login
+                </Button>
+              </Link>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
   );
 }
-
-export default EmailConfirmation;

@@ -16,7 +16,7 @@ const isProfileComplete = user => (
         && !isEmpty(user.longitude)
         && !isEmpty(user.interests)
         && !isEmpty(user.profilePic)
-        && (user.isAccountConfirmed === 1 || user.isAccountConfirmed === true))
+        && (user.isAccountverif === 1 || user.isAccountverif === true))
 )
 
 module.exports = isProfileComplete

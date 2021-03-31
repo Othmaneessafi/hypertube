@@ -1,98 +1,71 @@
 import React from "react";
+import "./index.css";
+import Grid from "@material-ui/core/Grid";
 import { Field } from "redux-form";
-import * as Core from "@material-ui/core";
-// import * as Icons from '@material-ui/icons';
-import { makeStyles } from "@material-ui/core/styles";
-import logo from "../../image/logo.png";
-import textField from "../commun/TextField";
-import MyFlash from '../commun/flash'
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import textField from "../shared/TextField";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: "50%",
-    paddingTop: "5%",
-    marginTop: "35%",
-    paddingBottom: "7%",
-    borderRadius: theme.spacing(3),
-  },
-  avatar: {
-    margin: theme.spacing(0),
-    width: theme.spacing(15),
-    height: theme.spacing(17),
-  },
-  submit: {
-    margin: theme.spacing(0, 0, 1),
-    justifyContent: "center",
-    width: "90%",
-    borderRadius: theme.spacing(1),
-    textDecoration: "none",
-    background: "linear-gradient(30deg, #34ada4 10%, #0b777d 90%)",
-    "&:hover": {
-      background: "linear-gradient(30deg, #0b777d 10%, #34ada4 90%)",
-    },
-  },
-  margin: {
-    height: "30px",
-  },
-  login: {
-    color: "#07689F",
-  },
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(3),
-  },
-}));
-const ForgotPassword = (props) => {
-  const classes = useStyles();
-  const { handleSubmit, status, errors } = props;
+export default function forgot(props) {
+  const { handleSubmit } = props;
+
   return (
-    <Core.Container component="main" maxWidth="xs">
-      <div className={classes.margin}></div>
-      {status === "success" && (
-        <MyFlash variant="success" msg={["Please check your e-mail"]} />
-      )}
-      {status === "error" && <MyFlash variant="error" msg={[errors]} />}
-      <Core.Paper elevation={10} className={classes.paper}>
-        <Core.Avatar className={classes.avatar} src={logo} />
-        <Core.Typography
-          className={classes.login}
-          component="h1"
-          variant="h5"
-          color="primary"
-        >
-          Send reset link
-        </Core.Typography>
-        <form className={classes.form}>
-          <Core.Grid item xs={12}>
-            <Field
-              style={{ width: "90%", marginBottom: "15px" }}
-              name="email"
-              component={textField}
-              label="Email"
-              type="email"
-              rows="1"
-            />
-          </Core.Grid>
-          <Core.Grid item xs={12}>
-            <Core.Button
-              fullWidth
-              variant="contained"
-              type="submit"
-              color="primary"
-              className={classes.submit}
-              onClick={handleSubmit}
+    <>
+      <Grid
+        container
+        className="errorContainer"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={11} lg={3} container className="loginContainer">
+          <Grid
+            item
+            container
+            xs={12}
+            lg={12}
+            className="loginInputContainer"
+            justify="center"
+            alignItems="center"
+          >
+            <Grid
+              item
+              xs={12}
+              lg={10}
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
             >
-              Submit
-            </Core.Button>
-          </Core.Grid>
-        </form>
-      </Core.Paper>
-    </Core.Container>
+              <Link to="/browsing" style={{ textDecoration: "none" }}>
+                <h1 className="logo">HYPERTUBE</h1>
+              </Link>
+              <h3 className="message">Please enter your email</h3>
+              <Field
+                name="email"
+                label="Email"
+                type="email"
+                component={textField}
+                className="loginInput"
+                color="secondary"
+                InputProps={{ className: "loginInput" }}
+                InputLabelProps={{ className: "loginInputLabel" }}
+              />
+              <div style={{ height: 30 }} />
+              <Button
+                variant="contained"
+                color="secondary"
+                className="loginBtn"
+                type="submit"
+                value="ok"
+                onClick={handleSubmit}
+              >
+                Send Email
+              </Button>
+              <Link to="/signup" style={{ textDecoration: "none" }}></Link>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
   );
-};
-export default ForgotPassword;
+}

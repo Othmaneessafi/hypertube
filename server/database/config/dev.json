@@ -1,9 +1,9 @@
 {
     "dev": {
-    "host": "192.168.99.104",
+    "host": "192.168.99.100",
     "user": "root",
-    "password": "pikala",
-    "database": "db_matcha",
+    "password": "tibicha",
+    "database": "hypertube",
     "driver": "mysql",
     "multipleStatements": true
     },"sql-file": true

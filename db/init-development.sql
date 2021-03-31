@@ -1,3 +1,3 @@
-CREATE USER 'pikala'@'%' IDENTIFIED BY 'pikala';
+CREATE USER 'tibicha'@'%' IDENTIFIED BY 'tibicha';
 
-grant ALL PRIVILEGES ON *.* TO 'pikala'@'%';
+grant ALL PRIVILEGES ON *.* TO 'tibicha'@'%';
