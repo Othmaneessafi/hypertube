@@ -2,8 +2,10 @@ const bcrypt = require("bcrypt");
 const user = require('../models/user');
 
 Login = async (req, res) => {
+    
     const { username, password } = req.body;
     let dataUser = await user.getUser('GetUserByUsername', username);
+    console.log(dataUser,'okiiidatatttttttt')
     if (dataUser) {
         bcrypt.compare(password, dataUser.password)
             .then((response) => {

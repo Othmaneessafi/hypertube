@@ -1,242 +1,183 @@
-import React from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import * as Core from "@material-ui/core";
-import * as Icons from "@material-ui/icons";
-import clsx from "clsx";
-import logo from "../../image/logo.png";
-import Menu from "@material-ui/core/Menu";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import { Link } from "react-router-dom";
-import imgprofile from "../../image/default.jpg"
+import React from 'react';
+import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import AppsIcon from '@material-ui/icons/Apps';
+import PersonIcon from '@material-ui/icons/Person';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5",
-  },
-})((prop) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...prop}
-  />
-));
 
-const drawerWidth = 200;
-const useStyles = makeStyles((theme) => ({
-  containeer: {
-    display: "relative",
+const drawerWidth = 240;
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'relative',
     marginBottom: theme.spacing(10),
   },
   appBar: {
-    backgroundColor: "#FFFFFF",
-    height: "60px",
-  },
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
 
+    }),
+    backgroundColor: "#FFFFFF"
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
   menuButton: {
-    magrin: "0px",
-    padding: "0px",
-    color: "#174F70",
+    marginRight: theme.spacing(2),
+  },
+  hide: {
+    display: 'none',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
+
   },
-  hide: {
-    magrin: "0px",
-    padding: "0px",
-    display: "none",
-  },
-  avatar: {
-    height: "37px",
-    width: "37px",
-    border: " 1px solid #c9c9c9"
-  },
-  notif: {
-    color: "#174F70",
-    marginLeft: "auto",
-    marginRight: "0",
-  },
-  logout: {
-    backgroundColor: "#174F70",
-    color: "#FFF",
-  },
-  username: {
-      margin: "0px",
-      padding : "0px",
-    // backgroundColor: "red",
-    // margin: "0",
-    // marginLeft: "0.5%",
-      fontSize: "20px",
-  },
-  drawer: {
-    width: "200",
-    flexShrink: 0,
-    [theme.breakpoints.up("sm")]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  logo: {
-    height: "60px",
-    width: "60px",
-    marginLeft: "0",
-    marginTop: "5px",
-  },
-  sidebaricon: {
-    color: "#11878D",
-  },
-  sidebartext: {
-    color: "#174F70",
-  },
-  menuItem: {
-    color: "#11878D",
-  },
-  margiin: {
-    width: 150,
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
   },
   title: {
-    color: "#174F70",
-    margin: "0px",
+    flexGrow: 1,
   },
+  notif: {
+    margin: 'auto'
+  },
+
 }));
-const Navbar = (props) => {
-  const {
-    images,
-    user,
-    unseenNotif,
-    handleNotifListOpen,
-    handleLogout,
-  } = props;
-  const classes = useStyles();
-  const [sidebar] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleOpenMenu = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
-  const handleCloseMenutwo = () => {
-    handleLogout();
-    setAnchorEl(null);
-  };
-  const sidebarmenu = [
-    { text: "Browse", path: "/Browser", icon: <Icons.Apps /> },
-    // { text: "Search", path: "/search", icon: <Icons.Search /> },
-    { text: "Profile", path: "/userprofile", icon: <Icons.Person /> },
-    { text: "Activity", path: "/activity", icon: <Icons.History /> },
-    { text: "Chat", path: "/chat", icon: <Icons.Chat /> },
+
+function NavBar(props) {
+  const { handleProfileOpen, user, handleLogout } = props;
+  const loggedInMenu = [
+    { "text": "Home", "path": "/", icon: <AppsIcon color="inherit" /> },
+    { "text": "Watch list", "path": "/watchList", icon: <VisibilityIcon color="inherit" /> },
   ];
+  const loggedOutMenu = [
+    { "text": "Login", "path": "/login", icon: <LockOpenIcon color="inherit" /> },
+    { "text": "Register", "path": "/register", icon: <LockOpenIcon color="inherit" /> },
+  ];
+  let menu = [];
+  if (user && user.token) {
+    menu = loggedInMenu;
+  }
+  else
+    menu = loggedOutMenu;
+
+  const classes = useStyles();
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const handleClickAway = () => {
+    setOpen(false);
+  };
+
   return (
-    <Core.Grid container item sm={12} className={classes.containeer}>
-      <Core.AppBar
-        position="fixed"
-        className={clsx(classes.appBar, { [classes.appBarShift]: sidebar })}
-      >
-        <Core.Toolbar>
-          <Core.Typography
-            variant="h6"
-            color="primary"
-           
-          >
-            <Core.Link
-              href="/Browser"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <img className={classes.logo} alt="." src={logo} />
-            </Core.Link>
-          </Core.Typography>
-          {user && user.token && (
-            <Core.Button
-              edge="end"
-              onClick={handleNotifListOpen}
-              color="primary"
-              className={classes.notif}
-            >
-              <Core.Badge badgeContent={unseenNotif} color="secondary">
-                <Icons.NotificationsNone />
-              </Core.Badge>
-            </Core.Button>
-          )}
-          {user && user.token && (
-            <Link
-              to={"/userprofile"}
-              style={{ textDecoration: "none", color: "#174F70" }}
-            >
-              <Core.Typography
-                variant="h6"
-                color="primary"
-                className={classes.title}
-              >
-                {user.username}
-              </Core.Typography>
-            </Link>
-          )}
-          {user && (
-            <Core.Button className={classes.username} onClick={handleOpenMenu}>
-              {images.isImages &&
-                images.images.map((tile) => {
-                  return (
-                    <Core.Grid key={tile.id}>
-                      {tile.isProfilePic ? (
-                        <Core.Avatar
-                          className={classes.avatar}
-                          src={`http://localhost:3001/${tile.path}`}
-                        />
-                      ) : null}
-                      {/* {!images.isImages ? (<Core.Avatar
-                          className={classes.avatar}
-                          src={imgprofile}
-                      />) : ""} */}
-                    </Core.Grid>
-                  );
-                })}
-            </Core.Button>
-          )}
-          {/* <Core.Button color="primary">Logout</Core.Button> */}
-        </Core.Toolbar>
-      </Core.AppBar>
-      {user && user.token && (
-        <StyledMenu
-          id="customized-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleCloseMenu}
+    <ClickAwayListener onClickAway={handleClickAway}>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}
+
         >
-          <Core.List className={classes.margiin}>
-            {sidebarmenu.map((item) => (
-              <Link
-                to={item.path}
-                style={{ textDecoration: "none", color: "#174F70", }}
-                key={item.text}
-              >
-                <Core.ListItem button>
-                  <Core.ListItemIcon style={{color : "#118880"}}>{item.icon}</Core.ListItemIcon>
-                  <Core.ListItemText primary={item.text} />
-                </Core.ListItem>
+          <Toolbar>
+            <IconButton
+              color="primary"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            
+            {user && user.token && <IconButton onClick={handleProfileOpen}>
+              <PersonIcon color="primary" />
+            </IconButton>}
+
+            {user && user.token && <Button color="primary" onClick={handleLogout}><ExitToAppIcon /></Button>}
+            {user === null &&   <Button color="primary">
+                <Link to="/" >
+                  LOGIN
+                </Link>
+              </Button>}
+              {user === null &&   <Button color="primary">
+                <Link to="/register" >
+                  REGISTER
+                </Link>
+              </Button>}
+          </Toolbar>
+        </AppBar>
+
+        <Drawer
+          className={classes.drawer}
+          variant="persistent"
+          anchor="left"
+          open={open}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'ltr' ? <ChevronLeftIcon color="primary" /> : <ChevronRightIcon />}
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            {menu.map((item) => (
+              <Link to={item.path} style={{ textDecoration: 'none', color: 'primary' }} key={item.text}>
+                <ListItem button>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItem>
               </Link>
             ))}
-          </Core.List>
-          <Core.ListItem button>
-            <ListItemIcon>
-              <Icons.ExitToApp fontSize="small" />
-            </ListItemIcon>
-            {user && user.token && (
-              <Core.ListItemText onClick={handleCloseMenutwo}>
-                Logout
-              </Core.ListItemText>
-            )}
-          </Core.ListItem>
-        </StyledMenu>
-      )}
-    </Core.Grid>
+          </List>
+        </Drawer>
+      </div>
+    </ClickAwayListener>
   );
-};
-export default Navbar;
+}
+
+export default NavBar;

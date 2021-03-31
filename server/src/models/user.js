@@ -19,15 +19,16 @@ module.exports = {
         return new Promise((resolve, reject) => {
             con.query(SELECT[type], value, (err, res) => {
                 if (err)
-                    reject(err);
+                reject(err);
                 else {
                     if (!uti.isEmpty(res)) {
                         const data = JSON.parse(JSON.stringify(res))[0];
                         let datatoken = JSON.parse(JSON.stringify(res))[0];
                         delete datatoken.password;
                         delete datatoken.vfToken;
-                        let token = jwt.sign(data[0], 'SecretKey');
-                        data.token = token;
+                        let vftoken = jwt.sign(datatoken, 'SecretKey');
+                        data.token = vftoken;
+                        console.log(data)
                         resolve(data);
                     } 
                     else 

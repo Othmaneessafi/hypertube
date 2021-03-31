@@ -1,19 +1,19 @@
 
    const FORTYTWO = {
-    clientID: "df5e9ac7c1ffdac9f02bc6a4199d71dba3a6aeb2f66b0ed3c73a01b37586fdb0",
-    clientSecret: "2984f7841ea76aaa291f3218f15595a9ca9a75a26c552ee14a6359594adc2f34",
+    clientID: "467887a3148ea072c4aa0014c6bae631abded5ece21650ead1127b992934fcd0",
+    clientSecret: "ff0506ed7221dddcaf772b88ae6a4f80aa71f5676bf181bbd65a9bf8f44cff9c",
 };
 const GOOGLE = {
-    clientID: "1046195082444-nr6hm0sqthj24oen28v1si5arrabjgn3.apps.googleusercontent.com",
-    clientSecret: "THbHT4ME5ATJM4tETbrZ_BWq"
+    clientID: "253372422583-1pbbatcqg5gab9hb3n0udn1had7r6r64.apps.googleusercontent.com",
+    clientSecret: "2-I_tVRqwpRAuPIHye1ML-oJ"
 };
 const LINKEDIN = {
     clientID: "778li4tq53u8ac",
     clientSecret:  "bEiab98wbcZhjuV2"
 };
 const GITHUB = {
-    clientID: "5806a79730ee93427b05",
-    clientSecret:  "f31a7d54d0dd336cc4919f4d5acdacf5ec652af9"
+    clientID: "50b0aaf547d3c042aabc",
+    clientSecret:  "192cf9e479e4e6671046891c42309d408b7f99b2"
 }
 const SPOTIFY = {
     clientID:"5f7124828bb3404382bc2473cc5865ff",

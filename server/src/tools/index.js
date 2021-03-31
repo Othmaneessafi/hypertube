@@ -10,11 +10,12 @@ const isFloat = require("./string/isFloat")
 
 const isUsername = require("./user/isUsername")
 const isEmail = require("./user/isEmail")
+
 const isFirstname = require("./user/isFirstname")
 const isLastname = require("./user/isLastname")
 const isPassword = require("./user/isPassword")
 
-// const generate = require("./user/PasswordGenerator")
+const generate = require("./user/PasswordGenerator")
 const download = require("./image/downloadImage")
 
 const isSort = require("./movieFilter/isSort")
@@ -25,6 +26,7 @@ const isTitle = require("./movieFilter/isTitle")
 module.exports = {
     isEmpty, isDigit, isLowercase, isUppercase, isSpecial,
     isAlpha, isAlphaNumeric, isNumeric, isFloat, isUsername,
-    isEmail, isFirstname, isLastname, isPassword, isSort,
-    isCategory, isPage, isTitle,/*generate,*/ download
+    isEmail,  isFirstname, isLastname, isPassword,
+    isSort, isCategory, isPage, isTitle,
+    generate, download,
 };

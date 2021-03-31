@@ -19,15 +19,15 @@ const validate = (values) => {
 
 const mapStateToProps = (state) => (
 {
-    form : state.form,
-    status : state.login.status,
-    errors: state.login.error,
-    token : state.user,
-    registredStatus: state.register.registerStatus,
-});
+    "form" : state.form,
+    "status" : state.login.status,
+    "errors": state.login.error,
+    "token" : state.user,
+    "registredStatus": state.register.registerStatus,
 
+});
 const mapDispatchToProps = {
-    loginAction: LoginAction
+    "loginAction": LoginAction
 };
 const mergeProps = (stateProps, dispatchProps, otherProps) => ({
     ...stateProps,
@@ -37,11 +37,12 @@ const mergeProps = (stateProps, dispatchProps, otherProps) => ({
         dispatchProps.loginAction(form);
     })
 });
- 
+
 const connectedLoginContainer = connect(mapStateToProps, mapDispatchToProps,mergeProps)(Login);
 
 const LoginContainer = reduxForm({
     form : "login",
+    "destroyOnUnmount": true,
     validate,
 })(connectedLoginContainer);
 
