@@ -14,7 +14,7 @@ export default function intro() {
           </Grid>
           <Grid item lg={9}></Grid>
           <Grid item lg={1}>
-            <Link to="/signin" style={{ textDecoration: "none" }}>
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <Button
                 color="secondary"
                 className="introBtn"
@@ -33,7 +33,7 @@ export default function intro() {
             </h1>
           </Grid>
           <Grid item lg={4} className="descriptionContainer">
-          <Link to="/signup" style={{ textDecoration: "none" }}>
+          <Link to="/register" style={{ textDecoration: "none" }}>
             <Button
               color="secondary"
               className="startedBtn"

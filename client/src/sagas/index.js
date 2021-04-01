@@ -4,6 +4,7 @@ import loginSaga from './loginSaga';
 import logoutSaga from "./logoutSaga";
 import resetPasswordSaga from './resetPSaga';
 import editProfile from './profileSaga';
+import moviesSaga from "./moviesSaga";
 
 
 
@@ -13,6 +14,7 @@ export default function *ind() {
     fork(loginSaga),
     fork(resetPasswordSaga),
     fork(logoutSaga),
+    fork(moviesSaga),
     fork(editProfile),
 
   ]);

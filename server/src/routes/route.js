@@ -3,8 +3,13 @@ const router = express.Router();
 
 const logout = require('../controllers/logout');
 const editProfile = require ('../controllers/editProfile');
-
-
+const getMovies = require('../controllers/Library/getMovies');
+const getMovieData = require('../controllers/Library/getMovieData');
+const getSimilarMovies = require('../controllers/Library/getSimilarMovies')
+const updateSeen = require('../controllers/Library/updateSeen')
+const getSeenMovies = require('../controllers/Library/getSeenMovies')
+const getComments = require('../controllers/Library/getComments');
+const addComment = require('../controllers/Library/addComment');
 
 const checkToken = require('../controllers/checkToken');
 router.use(async function (req,res,next) {
@@ -25,6 +30,13 @@ router.use(async function (req,res,next) {
 
 router.post('/logout', logout);
 router.post('/editProfile', editProfile);
+router.post('/getMovies', getMovies);
+router.post('/getMovieData',getMovieData);
+router.post('/getSimilarMovies',getSimilarMovies);
+router.post('/updateSeen',updateSeen)
+router.post('/getSeenMovies',getSeenMovies)
+router.post('/getComments', getComments);
+router.post('/addComment', addComment);
 
 
 

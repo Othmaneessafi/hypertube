@@ -67,7 +67,7 @@ module.exports = {
 
     getComment: function (type, value){
         return new Promise ((resolve, reject) => {
-            conn.query(SELECT[type], value,(err,res) => {
+            con.query(SELECT[type], value,(err,res) => {
                 if(err)
                     reject(err);
                 else
