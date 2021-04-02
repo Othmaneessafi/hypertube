@@ -2,11 +2,11 @@ const cloudscraper = require('cloudscraper');
 
 const getMoviesByName = (filter) => {
     return new Promise((resolve, reject) => (
-        cloudscraper.get(`https://yts.unblocked4u.net/api/v2/list_movies.json/${filter.page}?sort=title&order=1&keywords=${filter.title}`)
+        cloudscraper.get(`http://api.pctapi.com/list?sort=seeds&short=1&cb=&quality=720p,1080p,3d&page=${filter.page}&?sort=title&keywords=${filter.title}`)
         .then(resp => {
             let result1 = JSON.parse(resp);
-            if(result1.length > 0 && result1[0].title){
-                resolve(result1);
+            if(result1.MovieList.length > 0 && result1.MovieList[0].title){
+                resolve(result1.MovieList);
             }
             else
             {

@@ -1,6 +1,5 @@
 import React, {useEffect}  from 'react';
 import Routes from './Routes/Routes';
-import Navbar from './containers/Navbar';
 import Footer from './components/Footer';
 import './App.css'
 function App() {

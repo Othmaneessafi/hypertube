@@ -50,6 +50,7 @@ const HomeContainer = (props) => {
         })
     }
     const handleSubmitSearch = (e) => {
+        console.log(filter);
         filter.title && getMovies(filter);
     }
     const handleChangeCategory = (newValue) => {
@@ -65,10 +66,10 @@ const HomeContainer = (props) => {
         setFilter({
             page: 1,
             title: null,
-            sortBy: newValue.value,
+            sortBy: newValue,
             category: filter.category,
         })
-        getMovies({page: 1, title: null, sortBy: newValue.value, category: filter.category})
+        getMovies({page: 1, title: null, sortBy: newValue, category: filter.category})
     }
     return (
         <div>

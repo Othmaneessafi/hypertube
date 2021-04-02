@@ -1,5 +1,5 @@
 const isSort = (sort) => {
-    if(sort !== null && sort !== 'year' && sort !== 'rating' && sort !== 'last_added' && sort !== 'trending')
+    if(sort !== null && sort !== 'year' && sort !== 'seeds' && sort !== 'dateadded' && sort !== 'title')
         return false
     return true
 }

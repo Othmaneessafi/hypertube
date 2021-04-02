@@ -1,19 +1,19 @@
 const cloudscraper = require('cloudscraper');
 const getAllMovies = (filter) => {
     return new Promise((resolve, reject) => (
-        cloudscraper.get(`https://yts.unblocked4u.org/api/v2/list_movies.json/?limit=50&sort_by=download_count&sort=order_by=desc&page=${filter.page}`)
+        cloudscraper.get(`http://api.pctapi.com/list?limit=2&sort=seeds&short=1&cb=&quality=720p,1080p,3d&page=${filter.page}`)
         .then(resp => {
             // console.log("enter")
             let result1 = JSON.parse(resp);
-            // console.log(result1)
-            if(result1.length > 0 && result1[0].title)
+            console.log(result1.MovieList.sort())
+            if(result1.MovieList.length > 0)
             {
-                result1.sort((a, b) => {return b.rating.percentage - a.rating.percentage})
-                resolve(result1);
+                result1.MovieList.sort((a, b) => {return b.rating.percentage - a.rating.percentage})
+                resolve(result1.MovieList);
             }
             else
             {
-                // console.log("here")
+                console.log("here")
                 cloudscraper.get(`https://yts.unblocked4u.org/api/v2/list_movies.json/?limit=50&sort_by=download_count&sort=order_by=desc&page=${filter.page}`)
                 .then(resp => {
                     let result2 = JSON.parse(resp);

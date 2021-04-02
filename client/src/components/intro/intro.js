@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import "./intro.css";
 
 export default function intro() {
@@ -39,7 +40,7 @@ export default function intro() {
               className="startedBtn"
               variant="contained"
             >
-              GET STARTED&nbsp;&nbsp;<i className="fas fa-chevron-right"></i>
+              GET STARTED&nbsp;&nbsp;<ArrowForwardIosIcon className="startedIcon" />
             </Button>
             </Link>
           </Grid>

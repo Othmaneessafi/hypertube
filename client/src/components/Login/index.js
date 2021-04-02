@@ -24,10 +24,10 @@ export default function signin(props) {
       <Grid
         container
         className="signinContainer"
-        justify="center"
-        alignItems="center"
+        // justify="center"
+        // alignItems="center"
       >
-        <Grid item xs={11} lg={3} container className="loginContainer">
+        <Grid item xs={11} lg={4} container className="loginContainer">
           <Grid
             item
             container

@@ -1,182 +1,128 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import AppsIcon from '@material-ui/icons/Apps';
-import PersonIcon from '@material-ui/icons/Person';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import React from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import PersonIcon from "@material-ui/icons/Person";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchIcon from '@material-ui/icons/Search';
+import Select from "react-select";
+import "./navbar.css";
 
+const categories = [
+  { value: "animation", label: "Animation" },
+  { value: "action", label: "Action" },
+  { value: "adventure", label: "Adventure" },
+  { value: "comedy", label: "Comedy" },
+  { value: "drama", label: "Drama" },
+  { value: "horror", label: "Horror" },
+  { value: "music", label: "Music" },
+  { value: "romance", label: "Romance" },
+  { value: "sci-Fi", label: "Sci-Fi" },
+  { value: "thriller", label: "Thriller" },
+];
 
-const drawerWidth = 240;
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'relative',
-    marginBottom: theme.spacing(10),
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-
-    }),
-    backgroundColor: "#FFFFFF"
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  title: {
-    flexGrow: 1,
-  },
-  notif: {
-    margin: 'auto'
-  },
-
-}));
-
+const sortBy = [
+  { label: "Year", value: "year" },
+  { label: "Popularity", value: "seeds" },
+  { label: "Date added", value: "dateadded" },
+  { label: "Title", value: "title" },
+];
 function NavBar(props) {
-  const { handleProfileOpen, user, handleLogout } = props;
-  const loggedInMenu = [
-    { "text": "Home", "path": "/", icon: <AppsIcon color="inherit" /> },
-    { "text": "Watch list", "path": "/watchList", icon: <VisibilityIcon color="inherit" /> },
-  ];
-  const loggedOutMenu = [
-    { "text": "Login", "path": "/login", icon: <LockOpenIcon color="inherit" /> },
-    { "text": "Register", "path": "/register", icon: <LockOpenIcon color="inherit" /> },
-  ];
-  let menu = [];
-  if (user && user.token) {
-    menu = loggedInMenu;
-  }
-  else
-    menu = loggedOutMenu;
+  const { handleProfileOpen, user, handleLogout, handleSubmitSearch, handleChangeSearch, handleChangeCategory, handleChangeSort} = props;
+  const [sort, setSort] = React.useState('none');
+  const [category, setCategory] = React.useState('none');
 
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const handleSort = (event) => {
+    setSort(event.target.value);
+    handleChangeSort(event.target.value);
+  };
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-  const handleClickAway = () => {
-    setOpen(false);
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+    handleChangeCategory(event.target.value);
   };
 
   return (
-    <ClickAwayListener onClickAway={handleClickAway}>
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-
-        >
-          <Toolbar>
-            <IconButton
-              color="primary"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, open && classes.hide)}
+    <AppBar position="fixed" className="navbar">
+      <Toolbar>
+        <Grid container>
+          <Grid item lg={1}>
+            <h1>hypertube</h1>
+          </Grid>
+          <Grid item lg={4}></Grid>
+          <Grid item container justify="center" alignItems="center" lg={2}>
+            <TextField
+              label="Search"
+              color="secondary"
+              fullWidth
+              onChange={handleChangeSearch}
+              InputProps={{ className: "loginInput",
+              endAdornment: (
+                <InputAdornment>
+                    <SearchIcon style={{ cursor: 'pointer'}} onClick={handleSubmitSearch} />
+                </InputAdornment> )}}
+              InputLabelProps={{ className: "loginInputLabel" }}
+            />
+          </Grid>
+          <Grid item container justify="center" alignItems="center" lg={2}>
+            <TextField
+              select
+              label="Categories"
+              color="secondary"
+              onChange={handleCategory}
+              value={category}
+              // fullWidth
+              style={{ width: "30%", marginRight: 10 }}
+              InputProps={{className: "loginInput"}}
+              InputLabelProps={{ className: "loginInputLabel" }}
             >
-              <MenuIcon />
-            </IconButton>
-
-            
-            {user && user.token && <IconButton onClick={handleProfileOpen}>
-              <PersonIcon color="primary" />
-            </IconButton>}
-
-            {user && user.token && <Button color="primary" onClick={handleLogout}><ExitToAppIcon /></Button>}
-            {user === null &&   <Button color="primary">
-                <Link to="/" >
-                  LOGIN
-                </Link>
-              </Button>}
-              {user === null &&   <Button color="primary">
-                <Link to="/register" >
-                  REGISTER
-                </Link>
-              </Button>}
-          </Toolbar>
-        </AppBar>
-
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon color="primary" /> : <ChevronRightIcon />}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {menu.map((item) => (
-              <Link to={item.path} style={{ textDecoration: 'none', color: 'primary' }} key={item.text}>
-                <ListItem button>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-        </Drawer>
-      </div>
-    </ClickAwayListener>
+              {categories.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {console.log(option.value,'ghfhnfnhfnhfhnfhnfhnfh')}
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              select
+              label="Sort By"
+              color="secondary"
+              onChange={handleSort}
+              value={sort}
+              // fullWidth
+              style={{ width: "30%" }}
+              InputProps={{ className: "loginInput" }}
+              InputLabelProps={{ className: "loginInputLabel" }}
+            >
+              {sortBy.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item lg={2}></Grid>
+          <Grid item container justify="center" alignItems="center" lg={1}>
+            {user && user.token && (
+              <IconButton onClick={handleProfileOpen}>
+                <PersonIcon color="secondary" />
+              </IconButton>
+            )}
+            {user && user.token && (
+              <Button color="secondary" onClick={handleLogout}>
+                <ExitToAppIcon />
+              </Button>
+            )}
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
   );
 }
 

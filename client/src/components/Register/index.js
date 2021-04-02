@@ -58,10 +58,11 @@ export default function Signup(props) {
       <Grid
         container
         className="signupContainer"
-        justify="center"
-        alignItems="center"
+        // justify="center"
+        
       >
-        <Grid item xs={11} lg={3} container className="logupContainer">
+        <Grid item lg={2} ></Grid>
+        <Grid item xs={11} lg={7} container className="logupContainer">
           <Grid
             item
             container

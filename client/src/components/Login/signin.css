@@ -3,6 +3,7 @@
   width: 100%;
   background-image: url(./img/bg1.jpg);
   background-size: cover;
+  padding: 10%;
 }
 
 .loginContainer {
