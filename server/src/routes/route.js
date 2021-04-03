@@ -10,8 +10,10 @@ const updateSeen = require('../controllers/Library/updateSeen')
 const getSeenMovies = require('../controllers/Library/getSeenMovies')
 const getComments = require('../controllers/Library/getComments');
 const addComment = require('../controllers/Library/addComment');
-
+const streaming = require('../controllers/Library/streaming');
 const checkToken = require('../controllers/checkToken');
+router.get('/streaming/:hash',streaming);
+
 router.use(async function (req,res,next) {
     const token = req.headers.authorization;
     // console.log('ok')

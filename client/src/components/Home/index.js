@@ -195,7 +195,8 @@ export default function Home(props) {
                             justify="center"
                             alignItems="center"
                             onClick={(e) => handleMovie(element)}
-                          >
+                            >
+                            {/* {console.log(element)} */}
                             <Grid item xs={12} className="text">
                               <h1>
                                 {element.title ||

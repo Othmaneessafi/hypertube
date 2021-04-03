@@ -11,6 +11,7 @@
   "author": "izouiten cnaour",
   "license": "ISC",
   "dependencies": {
+    "@amilajack/yifysubtitles": "^2.1.4",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -37,6 +38,7 @@
     "passport-google-oauth": "^2.0.0",
     "request": "^2.88.2",
     "socket.io": "^2.4.1",
+    "torrent-stream": "^1.2.1",
     "unirest": "^0.6.0",
     "yifysubs": "^0.1.0",
     "yifysubtitles": "^2.1.5"

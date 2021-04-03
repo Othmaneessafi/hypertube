@@ -17,6 +17,7 @@ import { Redirect } from "react-router-dom";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { LinearProgress } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   gridList: {
@@ -95,12 +96,14 @@ const ViewMovie = (props) => {
         <div className="root">
           <Grid container spacing={2}>
             <Grid item container justify="center" xs={12} sm={4} >
+              {/* {console.log(movieDetails.torrents)} */}
               {movieDetails.trailer && <Button href={movieDetails.trailer} target="_blank" className={classes.button1} variant="contained" color="primary" startIcon={<YouTubeIcon />}>Trailer</Button>}
               {movieDetails.torrents && <Button className={classes.button} variant="contained" color="primary" startIcon={<PlayCircleFilledIcon />} onClick={handleClick}>Watch</Button>}
+              {(!movieDetails.torrents  || !movieDetails.trailer ) ? <Typography> Comming soon </Typography> : ''}
               <img src={movieDetails.Poster} className="image" alt="" />
               {isOpen && <Modal isOpen={isOpen} handleClose={handleClose}>
                 <video controls width="100%" height="500px">
-                  <source src={"http://localhost:5000/streaming/" + hash} type="video/mp4" />
+                  <source src={"http://localhost:3001/streaming/" + hash} type="video/mp4" />
                   {subtitles.ar && <track kind="subtitles" src={subtitles.ar} srcLang="ar" default={user.langue === "ar" ? true : false} />}
                   {subtitles.fr && <track kind="subtitles" src={subtitles.fr} srcLang="fr" default={user.langue === "fr" ? true : false} />}
                   {subtitles.en && <track kind="subtitles" src={subtitles.en} srcLang="en" default={user.langue === "en" ? true : false} />}
@@ -167,9 +170,9 @@ const ViewMovie = (props) => {
             
             <Grid item xs={12}>
               {similarMovies && <Typography color="textSecondary" variant="h4" >Similar movies</Typography>}
-              <GridList className={classes.gridList} cols={6}>
+              {similarMovies && <GridList className={classes.gridList} cols={6}>
                 {similarMovies && similarMovies.map((tile, index) => (
-                  <div  key={Math.random() + index}>
+                  <div  key={Math.random() + index }>
                     <GridListTile >
                       <button onClick={(e) => handleMovie(tile.id)}>
                         <img style={{ height: '310px' }} src={`http://image.tmdb.org/t/p/w185/${tile.poster_path}`} alt="s" />
@@ -177,7 +180,7 @@ const ViewMovie = (props) => {
                     </GridListTile>
                   </div>
                 ))}
-              </GridList>
+              </GridList>}
             </Grid>
             <Grid item xs={12}>
               <Comment handleVp={handleVp} handleChangeComment={handleChangeComment} handleAddComment={handleAddComment} comments={comments} />
@@ -188,7 +191,7 @@ const ViewMovie = (props) => {
 
       {movieDetails === 'loading' &&
         <Grid className={classes.loading} container justify="center">
-          <img src={`https://media.giphy.com/media/UpDq7PzULQYhlIZKMC/giphy.gif`} alt="s" />
+          <CircularProgress/>
         </Grid>}
       {movieDetails === 'error' && Redirect(`http://localhost:3000/`)}
     </>

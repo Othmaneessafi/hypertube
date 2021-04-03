@@ -35,9 +35,10 @@ const HomeContainer = (props) => {
         })
     }
     const handleMovie = (data) => {
+        console.log(data)
         document.documentElement.scrollTop = 0;
-        if(data.imdb_id)
-            history.push(`/view/${data.imdb_id}`);
+        if(data.imdb)
+            history.push(`/view/${data.imdb}`);
         else
             history.push(`/view/${data.imdb_code}`);
     }

@@ -35,7 +35,7 @@ const Comments = (props) => {
           <ListItem alignItems="flex-start" key={index}>
             <ListItemAvatar >
               <IconButton onClick={(e) => handleVp(tile)}>
-                <Avatar alt={tile.username} src={`http://localhost:5000/images/${tile.image}`} />
+                <Avatar alt={tile.username} src={`http://localhost:3001/${tile.image}`} />
               </IconButton>
             </ListItemAvatar>
             <ListItemText

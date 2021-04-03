@@ -23,7 +23,7 @@ const Profile = (props) => {
     return (
         <div className={classes.img} style={{ width: "250px", height: "250px", }} >
             <Avatar className={classes.img}>
-                <img style={{ width: "250px", height: "250px", }} src={`http://localhost:5000/images/${user.image}`} alt="" />
+                <img style={{ width: "250px", height: "250px", }} src={`http://localhost:3001/${user.image}`} alt="" />
             </Avatar>
             <Typography className={classes.typo}>
                 <strong>@{user.username}</strong>

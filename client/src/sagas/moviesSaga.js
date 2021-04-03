@@ -46,7 +46,7 @@ const getMovieData =
         try {
 
             const token = yield select((state) => state.user.token);
-
+// console.log(data);
             const response = yield call(request, {
                 "url": 'http://localhost:3001/getMovieData',
                 "data": data,
