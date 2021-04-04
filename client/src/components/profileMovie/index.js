@@ -164,13 +164,13 @@ const ViewMovie = (props) => {
                 <h2 className="movieInfos">Genre</h2>
               </Grid>
               <Grid item xs={12}>
-                <h4 className="movieMiniInfos">{movieDetails.genres}</h4>
+                <h4 className="movieMiniInfos">{movieDetails.genres.map(genre => (genre + ' - '))}</h4>
               </Grid>
               <Grid item xs={12}>
                 <h2 className="movieInfos">Country</h2>
               </Grid>
               <Grid item xs={12}>
-                <h4 className="movieMiniInfos">{movieDetails.countries} </h4>
+                <h4 className="movieMiniInfos">{movieDetails.countries.map(country => (country + ' - '))} </h4>
               </Grid>
               <Grid item xs={12}>
                 <h2 className="movieInfos">directors</h2>
@@ -180,25 +180,21 @@ const ViewMovie = (props) => {
               </Grid>
             </Grid>
           </Grid>
-          {/* <Grid item xs={12}>
-              {similarMovies && <Typography color="textSecondary" variant="h4" >Similar movies</Typography>}
-              {similarMovies && <GridList className={classes.gridList} cols={6}>
+          
+            
+        </Grid>
+        <Grid container item xs={12} style={{zIndex: 2}}>
+              {similarMovies && <Grid item xs={12}><h1 className="movieInfos">Similar movies</h1></Grid>}
                 {similarMovies && similarMovies.map((tile, index) => (
-                  <div  key={Math.random() + index }>
-                    <GridListTile >
-                      <button onClick={(e) => handleMovie(tile.id)}>
-                        <img style={{ height: '310px' }} src={`http://image.tmdb.org/t/p/w185/${tile.poster_path}`} alt="s" />
-                      </button>
-                    </GridListTile>
-                  </div>
-                ))}
-              </GridList>}
+                  <Grid item xs={1}  key={Math.random() + index } onClick={(e) => handleMovie(tile.id)} >
+                    <img style={{ height: '310px' }} src={`http://image.tmdb.org/t/p/w185/${tile.poster_path}`} alt="s" className="similarMovie"/>
+                  </Grid>
+                ))}}
             </Grid>
-            <Grid item xs={12}> */}
-          {/* <Comment handleVp={handleVp} handleChangeComment={handleChangeComment} handleAddComment={handleAddComment} comments={comments} />
-            </Grid> */}
         </Grid>
-        </Grid>
+        <Grid item xs={12}>
+           <Comment handleVp={handleVp} handleChangeComment={handleChangeComment} handleAddComment={handleAddComment} comments={comments} />
+            </Grid>
         </>
       )}
       {movieDetails === "loading" && (
