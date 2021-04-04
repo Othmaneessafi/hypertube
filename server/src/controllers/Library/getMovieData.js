@@ -46,7 +46,6 @@ getMovieData = async (req, res) => {
   // .then(response => (
   //     console.log(response.data)
   // ))
-  console.log(result1, "nooooooooooo");
   if (result1) {
     let x = JSON.parse(result1);
     info.torrents = x.torrents;

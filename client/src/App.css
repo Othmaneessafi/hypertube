@@ -19,6 +19,10 @@ body {
   /* overflow-x: hidden; */
   font-family: "Cardo", serif;
 }
+body::-webkit-scrollbar{
+  display: none;
+}
+
 h1,
 h2,
 h3,
