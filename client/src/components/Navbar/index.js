@@ -61,6 +61,7 @@ function NavBar(props) {
               label="Search"
               color="secondary"
               fullWidth
+              
               onChange={handleChangeSearch}
               InputProps={{ className: "loginInput",
               endAdornment: (
@@ -84,7 +85,6 @@ function NavBar(props) {
             >
               {categories.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
-                  {console.log(option.value,'ghfhnfnhfnhfhnfhnfhnfh')}
                   {option.label}
                 </MenuItem>
               ))}

@@ -1,13 +1,14 @@
 const cloudscraper = require('cloudscraper');
 const getFilteredMovies = (filter) => {
     return new Promise((resolve, reject) => {
+        console.log("dkhqlllllllllll")
         const obj = {
             category: filter.category === null  ? '' : filter.category,
             sortBy: filter.sortBy === null ? 'title' : filter.sortBy,
             orderPopCorn: filter.sortBy === null ? '1' : '-1',
             orderYts: filter.sortBy === null ? 'asc' : 'desc',
         }
-        console.log(obj.sortBy, 'kjhkjhds')
+        console.log(obj.category, 'category==============')
         cloudscraper.get(`http://api.pctapi.com/list?sort=${obj.sortBy}&short=1&quality=720p,1080p,3d&page=${filter.page}&genre=${obj.category}`)
         .then(resp => {
             let result1 = JSON.parse(resp);
@@ -25,6 +26,7 @@ const getFilteredMovies = (filter) => {
                     let result2 = JSON.parse(resp);
                     if(result2.status === 'ok' && result2.data.movies.length > 0)
                     {
+
                         resolve(result2.data.movies);
                     }
                 })

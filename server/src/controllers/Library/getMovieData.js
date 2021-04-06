@@ -50,7 +50,7 @@ getMovieData = async (req, res) => {
     let x = JSON.parse(result1);
     info.torrents = x.torrents;
     info.trailer = x.trailer;
-    console.log(x);
+    // console.log(x);
   }
   const subtitles = await yifysubtitles(imdb, {
     path: "./subtitles",
@@ -152,7 +152,7 @@ getMovieData = async (req, res) => {
     let Data = response.body;
     if (Data) {
       Data.torrents = info.torrents.en;
-      console.log(info.trailer, "okiiiii");
+      // console.log(info.trailer, "okiiiii");
       Data.subtitles = subtitles;
       req1.end(function (response1) {
         Data.imgs = response1.body;

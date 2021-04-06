@@ -5,7 +5,7 @@ const getAllMovies = (filter) => {
         .then(resp => {
             // console.log("enter")
             let result1 = JSON.parse(resp);
-            console.log(result1.MovieList.sort())
+            // console.log(result1.MovieList.sort())
             if(result1.MovieList.length > 0)
             {
                 result1.MovieList.sort((a, b) => {return b.rating.percentage - a.rating.percentage})

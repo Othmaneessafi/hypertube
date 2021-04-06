@@ -55,13 +55,17 @@ const HomeContainer = (props) => {
         filter.title && getMovies(filter);
     }
     const handleChangeCategory = (newValue) => {
+        // console.log("filter===================wwwww")
+        // console.log(newValue)
         setFilter({
             page: 1,
             title: null,
             sortBy: filter.sortBy,
-            category: newValue.value,
+            category: newValue,
         })
-        getMovies({page: 1, title: null, sortBy: filter.sortBy, category: newValue.value})
+        // console.log("filter===================")
+        // console.log(filter)
+        getMovies({page: 1, title: null, sortBy: filter.sortBy, category: newValue})
     }
     const handleChangeSort = (newValue) => {
         setFilter({

@@ -13,7 +13,7 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import Button from "@material-ui/core/Button";
 import Comment from "./comment";
 import Modal from "../shared/modal";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { LinearProgress } from "@material-ui/core";
@@ -121,7 +121,9 @@ const ViewMovie = (props) => {
               </Grid>
               <Grid item xs={12} className="CoverShading">
                 <Grid item xs={12}>
+                  <Link to="/Home" style={{ textDecoration: "none" }}>
                   <h1 className="movieInfos" style={{ padding: "30px", fontSize: "50px"}} >hypertube</h1>
+                  </Link>
                 </Grid>
               </Grid>
               <Grid item container className="movieInfosContainer" lg={6}>
@@ -269,7 +271,7 @@ const ViewMovie = (props) => {
         )}
       {movieDetails === "loading" && (
         <Grid className={classes.loading} container justify="center">
-          <CircularProgress />
+          <CircularProgress color ="secondary"/>
         </Grid>
       )}
       {movieDetails === "error" && Redirect(`http://localhost:3000/`)}

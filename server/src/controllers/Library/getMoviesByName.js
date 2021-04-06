@@ -5,6 +5,7 @@ const getMoviesByName = (filter) => {
         cloudscraper.get(`http://api.pctapi.com/list?sort=seeds&short=1&cb=&quality=720p,1080p,3d&page=${filter.page}&?sort=title&keywords=${filter.title}`)
         .then(resp => {
             let result1 = JSON.parse(resp);
+            console.log(result1.MovieList)
             if(result1.MovieList.length > 0 && result1.MovieList[0].title){
                 resolve(result1.MovieList);
             }

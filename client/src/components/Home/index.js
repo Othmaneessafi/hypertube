@@ -16,6 +16,7 @@ import { Button } from "@material-ui/core";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Navbar from "../Navbar";
 import "./home.css";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   upBtn: {
@@ -64,7 +65,7 @@ export default function Home(props) {
         handleChangeSort={handleChangeSort}
       />
       <Grid className="filterCont" container justify="center" direction="row">
-        <Tooltip title="Search">
+        <Tooltip title="Search" >
           <IconButton
             aria-label="Search"
             onClick={() => {
@@ -180,7 +181,7 @@ export default function Home(props) {
               movies.movies.length > 0 &&
               movies.movies.map((element, index) => (
                 <React.Fragment key={index}>
-                  {(element.large_cover_image || element.poster_big) && (
+                  {(element.large_cover_image ) ||  (element.poster_big && element.poster_big !== 'not found' && element.poster_big !== 'images/posterholder.png') && (
                       <Card className="card">
                         {console.log("dkhal")}
                         <div className="container">
@@ -188,7 +189,7 @@ export default function Home(props) {
                             className="media"
                             src={element.large_cover_image || element.poster_big}
                             alt={element.title}
-                          />
+                            onerror="this.onerror=null;this.src='https://www.google.com/images/srpr/logo11w.png';"                          />
                           <Grid
                             container
                             className="overlay"
@@ -239,7 +240,7 @@ export default function Home(props) {
       )}
       {movies.status === "loading" && (
         <Grid className={classes.loading} container justify="center">
-          <h1>LOADING</h1>
+          <CircularProgress color ="secondary"/>
         </Grid>
       )}
     </>

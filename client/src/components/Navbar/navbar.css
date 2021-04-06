@@ -24,6 +24,8 @@
 
 .search {
   color: whitesmoke !important;
+  border-width: "1px";
+  border-color: "yellow !important"
 }
 
 .username {
@@ -50,6 +52,11 @@
 
 .menuItem {
   color: #ff5733 !important;
+}
+
+.loginInput{
+  color: white;
+  border-bottom: 1px solid #f52757;
 }
 
 .menuItem:hover {
