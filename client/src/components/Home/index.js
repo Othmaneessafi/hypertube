@@ -56,6 +56,11 @@ export default function Home(props) {
   const [filter, setFilter] = React.useState(false);
   const [search, setSearch] = React.useState(false);
   console.log(movies);
+
+  const handleNotFound = (e) =>{
+    e.target.src = 'https://images-na.ssl-images-amazon.com/images/I/41bLP6NzvKL.jpg';
+  }
+
   return (
     <>
       <Navbar
@@ -187,9 +192,10 @@ export default function Home(props) {
                         <div className="container">
                           <img
                             className="media"
+                            onError={handleNotFound}
                             src={element.large_cover_image || element.poster_big}
                             alt={element.title}
-                            onerror="this.onerror=null;this.src='https://www.google.com/images/srpr/logo11w.png';"                          />
+                            />
                           <Grid
                             container
                             className="overlay"
