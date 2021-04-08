@@ -20,6 +20,7 @@ import { LinearProgress } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyles = makeStyles((theme) => ({
   gridList: {
     flexWrap: "nowrap",
@@ -101,7 +102,7 @@ const ViewMovie = (props) => {
   };
   return (
     <>
-      {console.log(similarMovies)}
+      {console.log(movieDetails)}
       {movieDetails !== "loading" &&
         movieDetails !== "error" &&
         movieDetails.status == "OK" && (
@@ -112,28 +113,48 @@ const ViewMovie = (props) => {
               alignItems="center"
               className="movieContainer"
             >
-              <Grid item xs={12} className="Cover">
+              <Grid item xs={false} sm={12} className="Cover">
                 <img
                   src={movieDetails.imgs.fanart}
                   className="imageCover"
-                  alt=""
+                  alt="cover"
                 />
               </Grid>
-              <Grid item xs={12} className="CoverShading">
-                <Grid item xs={12}>
-                  <Link to="/Home" style={{ textDecoration: "none" }}>
-                  <h1 className="movieInfos" style={{ padding: "30px", fontSize: "50px"}} >hypertube</h1>
-                  </Link>
-                </Grid>
+              <Grid container item xs={12} className="CoverShading">
+                  <Grid item xs={11} >
+                    <Link to="/Home" style={{ textDecoration: "none" }}>
+                      <h1 className="movieInfos" style={{ padding: "30px", fontSize: "50px"}} >hypertube</h1>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={1} >
+                      <ExitToAppIcon style={{ color: "white", paddingTop: "60px", fontSize: "40px", cursor: "pointer"}} />
+                  </Grid>
               </Grid>
-              <Grid item container className="movieInfosContainer" lg={6}>
-                <Grid item container sm={12} lg={4} alignItems="center">
-                  <Grid item sm={8}>
+              <Grid item container className="movieInfosContainer" lg={5}>
+                <Grid item container sm={12} lg={12} xl={4} alignItems="center" justify="center">
+                  <Grid item xl={8} lg={12} sm={8}>
                     <img
                       src={movieDetails.imgs.poster}
                       className="image"
-                      alt=""
+                      alt="poster"
                     />
+                    <Grid container item xl={12} lg={12} sm={8} >
+                      <Grid item lg={5} sm={12} style={{ marginRight: "15px"}}>
+                        <Button className={classes.button} variant="contained" color="secondary" startIcon={<PlayCircleFilledIcon />} onClick={handleClick} >Watch</Button>
+                      </Grid>
+                      <Grid item lg={5} sm={12}>
+                        <Button href={`https://www.youtube.com/watch?v=${movieDetails.youtube_trailer_key}`} target="_blank" className={classes.button1} variant="contained" color="secondary" startIcon={<YouTubeIcon />}>Trailer</Button>
+                      </Grid>
+                      {(!movieDetails.torrents) ? <h3 style={{ color: 'whitesmoke'}}> Comming soon </h3> : ''}
+                      {isOpen && <Modal isOpen={isOpen} handleClose={handleClose}>
+                          <video controls width="100%" height="100%">
+                            <source src={"http://localhost:3001/streaming/" + hash} type="video/mp4" />
+                            {subtitles.ar && <track kind="subtitles" src={subtitles.ar} srcLang="ar" default={user.langue === "ar" ? true : false} />}
+                            {subtitles.fr && <track kind="subtitles" src={subtitles.fr} srcLang="fr" default={user.langue === "fr" ? true : false} />}
+                            {subtitles.en && <track kind="subtitles" src={subtitles.en} srcLang="en" default={user.langue === "en" ? true : false} />}
+                          </video>
+                        </Modal>}
+                    </Grid>
                   </Grid>
                   <Menu
                     id="simple-menu"
@@ -156,7 +177,7 @@ const ViewMovie = (props) => {
                   </Menu>
                 </Grid>
 
-                <Grid item xs={12} sm={12} lg={8}>
+                <Grid item xs={12} sm={12} lg={12} xl={8}>
                   <Grid item container xs={12} sm={12}>
                     <Grid item xs={9}>
                       <h1 className="movieInfos">
@@ -205,7 +226,7 @@ const ViewMovie = (props) => {
                     </Grid>
                     <Grid item xs={12}>
                       <h4 className="movieMiniInfos">
-                        {movieDetails.genres.map((genre) => genre + " - ")}
+                        {movieDetails.genres && movieDetails.genres.map((genre) => genre + " - ")}
                       </h4>
                     </Grid>
                     <Grid item xs={12}>
@@ -213,7 +234,7 @@ const ViewMovie = (props) => {
                     </Grid>
                     <Grid item xs={12}>
                       <h4 className="movieMiniInfos">
-                        {movieDetails.countries.map(
+                        {movieDetails.countries && movieDetails.countries.map(
                           (country) => country + " - "
                         )}{" "}
                       </h4>
@@ -244,7 +265,12 @@ const ViewMovie = (props) => {
                   similarMovies.map((tile, index) => (
                     <Grid
                       item
-                      xs={1}
+                      container
+                      justify="center"
+                      xl={1}
+                      lg={2}
+                      sm={5}
+                      xs={12}
                       key={Math.random() + index}
                       onClick={(e) => handleMovie(tile.id)}
                       style={{ margin:'20px' }}
