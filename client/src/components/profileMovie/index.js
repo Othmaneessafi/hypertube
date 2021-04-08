@@ -20,7 +20,6 @@ import { LinearProgress } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyles = makeStyles((theme) => ({
   gridList: {
     flexWrap: "nowrap",
@@ -113,30 +112,27 @@ const ViewMovie = (props) => {
               alignItems="center"
               className="movieContainer"
             >
-              <Grid item xs={false} sm={12} className="Cover">
+              <Grid item xs={12} className="Cover">
                 <img
                   src={movieDetails.imgs.fanart}
                   className="imageCover"
-                  alt="cover"
+                  alt=""
                 />
               </Grid>
-              <Grid container item xs={12} className="CoverShading">
-                  <Grid item xs={11} >
-                    <Link to="/Home" style={{ textDecoration: "none" }}>
-                      <h1 className="movieInfos" style={{ padding: "30px", fontSize: "50px"}} >hypertube</h1>
-                    </Link>
-                  </Grid>
-                  <Grid item xs={1} >
-                      <ExitToAppIcon style={{ color: "white", paddingTop: "60px", fontSize: "40px", cursor: "pointer"}} />
-                  </Grid>
+              <Grid item xs={12} className="CoverShading">
+                <Grid item xs={12}>
+                  <Link to="/Home" style={{ textDecoration: "none" }}>
+                  <h1 className="movieInfos" style={{ padding: "30px", fontSize: "50px"}} >hypertube</h1>
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item container className="movieInfosContainer" lg={5}>
-                <Grid item container sm={12} lg={12} xl={4} alignItems="center" justify="center">
-                  <Grid item xl={8} lg={12} sm={8}>
+              <Grid item container className="movieInfosContainer" lg={6}>
+                <Grid item container sm={12} lg={4} alignItems="center">
+                  <Grid item sm={8}>
                     <img
                       src={movieDetails.imgs.poster}
                       className="image"
-                      alt="poster"
+                      alt=""
                     />
                   </Grid>
                   <Menu
@@ -160,7 +156,7 @@ const ViewMovie = (props) => {
                   </Menu>
                 </Grid>
 
-                <Grid item xs={12} sm={12} lg={12} xl={8}>
+                <Grid item xs={12} sm={12} lg={8}>
                   <Grid item container xs={12} sm={12}>
                     <Grid item xs={9}>
                       <h1 className="movieInfos">
@@ -209,7 +205,7 @@ const ViewMovie = (props) => {
                     </Grid>
                     <Grid item xs={12}>
                       <h4 className="movieMiniInfos">
-                        {movieDetails.genres && movieDetails.genres.map((genre) => genre + " - ")}
+                        {movieDetails.genres.map((genre) => genre + " - ")}
                       </h4>
                     </Grid>
                     <Grid item xs={12}>
@@ -217,7 +213,7 @@ const ViewMovie = (props) => {
                     </Grid>
                     <Grid item xs={12}>
                       <h4 className="movieMiniInfos">
-                        {movieDetails.countries && movieDetails.countries.map(
+                        {movieDetails.countries.map(
                           (country) => country + " - "
                         )}{" "}
                       </h4>
@@ -248,12 +244,7 @@ const ViewMovie = (props) => {
                   similarMovies.map((tile, index) => (
                     <Grid
                       item
-                      container
-                      justify="center"
-                      xl={1}
-                      lg={2}
-                      sm={5}
-                      xs={12}
+                      xs={1}
                       key={Math.random() + index}
                       onClick={(e) => handleMovie(tile.id)}
                       style={{ margin:'20px' }}
