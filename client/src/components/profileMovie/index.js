@@ -285,14 +285,14 @@ const ViewMovie = (props) => {
                   ))}
               </Grid>
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Comment
                 handleVp={handleVp}
                 handleChangeComment={handleChangeComment}
                 handleAddComment={handleAddComment}
                 comments={comments}
               />
-            </Grid>
+            </Grid> */}
           </>
         )}
       {movieDetails === "loading" && (
