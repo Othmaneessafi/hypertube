@@ -89,6 +89,7 @@ const ViewMovie = (props) => {
     handleAddComment,
     handleChangeComment,
     handleVp,
+    handleLogout
   } = props;
   const subtitles = sub(movieDetails.subtitles);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -121,13 +122,13 @@ const ViewMovie = (props) => {
                 />
               </Grid>
               <Grid container item xs={12} className="CoverShading">
-                  <Grid item xs={11} >
+                  <Grid item xs={11}>
                     <Link to="/Home" style={{ textDecoration: "none" }}>
-                      <h1 className="movieInfos" style={{ padding: "30px", fontSize: "50px"}} >hypertube</h1>
+                      <h1 className="movieLogo">hypertube</h1>
                     </Link>
                   </Grid>
-                  <Grid item xs={1} >
-                      <ExitToAppIcon style={{ color: "white", paddingTop: "60px", fontSize: "40px", cursor: "pointer"}} />
+                  <Grid item xs={1}>
+                      <ExitToAppIcon className="movieLogout" onClick={handleLogout} />
                   </Grid>
               </Grid>
               <Grid item container className="movieInfosContainer" lg={5}>

@@ -106,20 +106,17 @@ function NavBar(props) {
               ))}
             </TextField>
           </Grid>
-          <Grid item lg={2}></Grid>
-          <Grid item container justify="center" alignItems="center" lg={1}>
+          <Grid item lg={1}></Grid>
+          <Grid item container justify="center" alignItems="center" lg={2}>
             {console.log(user)}
             {user && user.token && (
               <>
                 <h4 style={{marginRight: 10}}>{user.username}</h4>
-                <Avatar alt='profile' src={`http://localhost:3001/${user.image}`} onClick={handleProfileOpen} style={{ cursor: 'pointer' }} />
+                <Avatar alt='profile' src={`http://localhost:3001/${user.image}`} onClick={handleProfileOpen} style={{ cursor: 'pointer', marginRight: 10 }} />
+              
+                <ExitToAppIcon onClick={handleLogout} />
               </>
             )}
-            {/* {user && user.token && (
-              <Button color="secondary" onClick={handleLogout}>
-                <ExitToAppIcon />
-              </Button>
-            )} */}
           </Grid>
         </Grid>
       </Toolbar>

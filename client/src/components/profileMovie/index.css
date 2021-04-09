@@ -28,6 +28,31 @@
     );
 }
 
+.movieLogo {
+    color: white;
+    padding: 30px;
+    font-size: 60px!important;
+}
+
+.movieLogout {
+    color: white;
+    padding-top: 80px!important;
+    font-size: 40px!important;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+    .movieLogo {
+        font-size: 20px !important;
+    }
+
+    .movieLogout {
+        font-size: 20px !important;
+        padding-top: 45px!important;
+    }
+}
+
+
 .movieInfosContainer {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     padding: 10px;

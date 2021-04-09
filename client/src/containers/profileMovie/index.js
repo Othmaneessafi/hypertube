@@ -6,10 +6,11 @@ import { getMovieData, getSimilarMovie, getComments, addComment,updateSeen} from
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import MyModal from "../../components/shared/modal";
+import { ClearUserInformation } from "../../actions/logoutAction";
 
 const ViewMovieContainer = (props) => {
     let history = useHistory();
-    const { user, getMovieData, getSimilarMovie, movieDetails, similarMovies, comments, getComments, addComment,updateSeen } = props;
+    const { user, getMovieData, getSimilarMovie, movieDetails, similarMovies, comments, getComments, addComment,updateSeen, handleLogout } = props;
     const imdb = props.match.params.imdb;
     const [isOpen, setIsOpen] = useState(false);
     const [hash, setHash] = useState(null);
@@ -80,7 +81,7 @@ const ViewMovieContainer = (props) => {
                 movieDetails={movieDetails} hash={hash} isOpen={isOpen} handleClose={handleClose}
                 handleWatch={handleWatch} similarMovies={similarMovies} handleMovie={handleMovie}
                 comments={comments} handleAddComment={handleAddComment} handleChangeComment={handleChangeComment}
-                handleVp={handleVp}
+                handleVp={handleVp} handleLogout={handleLogout}
             />
             {profile.open &&
                 <MyModal isOpen={profile.open} handleClose={handleViewClose}>
@@ -102,7 +103,16 @@ const mapDispatchToProps = {
     "updateSeen" : updateSeen,
     "getComments": getComments,
     "addComment": addComment,
+    "ClearUserInformation": ClearUserInformation,
 };
 
+const mergeProps = (stateProps, dispatchProps, otherProps) => ({
+    ...stateProps,
+    ...dispatchProps,
+    ...otherProps, 
+    "handleLogout" : () => {
+        dispatchProps.ClearUserInformation();
+    }
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewMovieContainer);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ViewMovieContainer);

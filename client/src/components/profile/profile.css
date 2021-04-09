@@ -1,114 +1,35 @@
-.profilContainer {
-  height: 100vh;
-}
-
 .profileContainer {
-  border-radius: 30px;
-  height: 70vh !important;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  animation: slideRight 0.8s;
-  font-size: auto !important;
-}
-
-@keyframes slideRight {
-  from {
-    margin-left: 200px;
-  }
-  to {
-    margin-left: 0;
-  }
-}
-
-.profileImageContainer {
-  background: rgb(254, 107, 139);
-  background: linear-gradient(
-    143deg,
-    rgba(254, 107, 139, 1) 0%,
-    rgba(255, 137, 91, 1) 100%
-  );
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
-  /* padding: 10px!important; */
-}
-
-.profileUserImage {
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  height: 70vh !important;
+  padding: 10px;
+  margin: 0;
 }
-.profileInputContainer {
+
+.profileCover {
+  width: 100%;
+  height: 30% !important;
+  z-index: 50;
+  border-radius: 10px 10px 0 0;
+  padding: 30px;
+}
+
+.profileInfos {
+  width: 100%;
+  height: 70% !important;
   background: rgb(65, 64, 65);
   background: linear-gradient(
     143deg,
     rgba(65, 64, 65, 1) 0%,
     rgba(30, 29, 32, 1) 69%
-    );
-  }
-  
-.profileImage {
-  width: 70%;
-  height: auto;
+  );
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  animation: fadeIn 1s;
-  transition: width 1s;
 }
+.profileImage {
 
-.profileImageContainer:hover .profileImage {
-  width: 90%;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.profileInput {
-  color: white;
-  margin-bottom: 7px !important;
-}
-
-.profileBtn {
-  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
-  border-radius: 0;
-  border: 0;
-  color: white;
-  height: 48;
-  padding: 0 30px;
-  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
-  width: 50%;
-}
-
-.logo {
-  color: white;
-}
-
-.profileInputLabel {
-  color: #dad6d5 !important;
-}
-.profileInput {
-  color: aliceblue !important;
-}
-
-@media screen and (max-width: 1280px) {
-  .profileImageContainer {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    padding: 30px !important;
-  }
-
-  .profileInputContainer {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    padding: 30px !important;
-  }
+.userImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }

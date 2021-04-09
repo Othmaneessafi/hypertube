@@ -2,22 +2,23 @@ import React from 'react';
 import Menu from '@material-ui/core/Menu';
 
 const MyMenu = (props) => {
-  const {handleClose, state, children} = props;
-  console.log(state,'staaaaaaaate')
+  const {handleClose, isOpen, children} = props;
   return (
     <>
       <Menu
         id="custom-menu"
-        anchorEl={state.anchor}
+        anchorEl={isOpen}
         keepMounted
-        open={state.open}
+        open={isOpen}
         onClose={handleClose}
         elevation={10}
         PaperProps={{
           style: {
-            maxHeight: 520,
-            width: 360,
-            marginTop: 50,
+            width: '70vh',
+            padding: 0,
+            margin: 0,
+            background: 'rgb(65, 64, 65)',
+            background: 'linear-gradient(143deg, rgba(65, 64, 65, 1) 0%, rgba(30, 29, 32, 1) 69%)',
           },
         }}
       >
