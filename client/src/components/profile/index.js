@@ -8,19 +8,19 @@ export default function Profile(props) {
   const { user } = props;
   return (
     <>
-    <Grid container item xs={12} className="profileContainer">
-      <Grid container item xs={12} className="profileCover">
-        <Grid item xs={4} className="profileImage">
-          <img src={`http://localhost:3001/${user.image}`} className="userImage"/>
+      <Grid container className="profileContainer">
+        <Grid container item xs={12} className="profileCover">
+          <Grid item xs={4} className="profileImage">
+            <img src={`http://localhost:3001/${user.image}`} className="userImage"/>
+          </Grid>
+          <Grid item xs={1}></Grid>
+          <Grid container item xs={3} justify="center">
+            <h1 >{user.username}</h1>
+          </Grid>
         </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid container item xs={3} justify="center">
-          <h1 >{user.username}</h1>
-        </Grid>
+        <Grid item xs={12} className="profileInfos"></Grid>
+        
       </Grid>
-      <Grid item xs={12} className="profileInfos"></Grid>
-      
-    </Grid>
     </>
   );
 }

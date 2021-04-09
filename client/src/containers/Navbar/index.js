@@ -2,7 +2,7 @@ import React, {useState } from 'react';
 import {connect} from "react-redux";
 import Nav from '../../components/Navbar';
 import Profile from '../../containers/profile';
-import MyMenu from '../../components/shared/menu';
+import MyMenu from '../../components/shared/modal';
 import { ClearUserInformation } from "../../actions/logoutAction";
 
 const NavBarContainer = (props) => {
