@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from '@material-ui/icons/Search';
-import Select from "react-select";
+import Modal from '@material-ui/core/Modal';
 import "./navbar.css";
 
 const categories = [
@@ -78,7 +78,6 @@ function NavBar(props) {
               color="secondary"
               onChange={handleCategory}
               value={category}
-              // fullWidth
               style={{ width: "30%", marginRight: 10 }}
               InputProps={{className: "loginInput"}}
               InputLabelProps={{ className: "loginInputLabel" }}
@@ -95,7 +94,6 @@ function NavBar(props) {
               color="secondary"
               onChange={handleSort}
               value={sort}
-              // fullWidth
               style={{ width: "30%" }}
               InputProps={{ className: "loginInput" }}
               InputLabelProps={{ className: "loginInputLabel" }}

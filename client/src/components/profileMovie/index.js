@@ -140,12 +140,12 @@ const ViewMovie = (props) => {
                     />
                     <Grid container item xl={12} lg={12} sm={8} >
                       <Grid item lg={5} sm={12} style={{ marginRight: "15px"}}>
-                        <Button className={classes.button} variant="contained" color="secondary" startIcon={<PlayCircleFilledIcon />} onClick={handleClick} >Watch</Button>
+                        
+                      {(!movieDetails.torrents) ? <h6 style={{ color: 'whitesmoke'}}> Comming soon </h6> : (<Button className={classes.button} variant="contained" color="secondary" startIcon={<PlayCircleFilledIcon />} onClick={handleClick} >Watch</Button>)}
                       </Grid>
                       <Grid item lg={5} sm={12}>
                         <Button href={`https://www.youtube.com/watch?v=${movieDetails.youtube_trailer_key}`} target="_blank" className={classes.button1} variant="contained" color="secondary" startIcon={<YouTubeIcon />}>Trailer</Button>
                       </Grid>
-                      {(!movieDetails.torrents) ? <h3 style={{ color: 'whitesmoke'}}> Comming soon </h3> : ''}
                       {isOpen && <Modal isOpen={isOpen} handleClose={handleClose}>
                           <video controls width="100%" height="100%">
                             <source src={"http://localhost:3001/streaming/" + hash} type="video/mp4" />
@@ -285,14 +285,6 @@ const ViewMovie = (props) => {
                   ))}
               </Grid>
             </Grid>
-            {/* <Grid item xs={12}>
-              <Comment
-                handleVp={handleVp}
-                handleChangeComment={handleChangeComment}
-                handleAddComment={handleAddComment}
-                comments={comments}
-              />
-            </Grid> */}
           </>
         )}
       {movieDetails === "loading" && (
@@ -301,6 +293,14 @@ const ViewMovie = (props) => {
         </Grid>
       )}
       {movieDetails === "error" && Redirect(`http://localhost:3000/`)}
+       {/* <Grid item xs={12}>
+              <Comment
+                handleVp={handleVp}
+                handleChangeComment={handleChangeComment}
+                handleAddComment={handleAddComment}
+                comments={comments}
+              />
+            </Grid> */}
     </>
   );
 };
