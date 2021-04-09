@@ -14,7 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import { Button } from "@material-ui/core";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Navbar from "../Navbar";
+import Navbar from "../../containers/Navbar";
 import "./home.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 

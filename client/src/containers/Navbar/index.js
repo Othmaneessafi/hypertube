@@ -37,7 +37,7 @@ const mapDispatchToProps = {
 const mergeProps = (stateProps, dispatchProps, otherProps) => ({
     ...stateProps,
     ...dispatchProps,
-    ...otherProps,
+    ...otherProps, 
     "handleLogout" : () => {
         dispatchProps.ClearUserInformation();
     }

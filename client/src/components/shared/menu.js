@@ -3,6 +3,7 @@ import Menu from '@material-ui/core/Menu';
 
 const MyMenu = (props) => {
   const {handleClose, state, children} = props;
+  console.log(state,'staaaaaaaate')
   return (
     <>
       <Menu

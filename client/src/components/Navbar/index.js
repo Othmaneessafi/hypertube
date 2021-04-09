@@ -13,6 +13,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from '@material-ui/icons/Search';
 import Modal from '@material-ui/core/Modal';
 import "./navbar.css";
+import { Avatar } from "@material-ui/core";
 
 const categories = [
   { value: "animation", label: "Animation" },
@@ -107,16 +108,18 @@ function NavBar(props) {
           </Grid>
           <Grid item lg={2}></Grid>
           <Grid item container justify="center" alignItems="center" lg={1}>
+            {console.log(user)}
             {user && user.token && (
-              <IconButton onClick={handleProfileOpen}>
-                <PersonIcon color="secondary" />
-              </IconButton>
+              <>
+                <h4 style={{marginRight: 10}}>{user.username}</h4>
+                <Avatar alt='profile' src={`http://localhost:3001/${user.image}`} onClick={handleProfileOpen} style={{ cursor: 'pointer' }} />
+              </>
             )}
-            {user && user.token && (
+            {/* {user && user.token && (
               <Button color="secondary" onClick={handleLogout}>
                 <ExitToAppIcon />
               </Button>
-            )}
+            )} */}
           </Grid>
         </Grid>
       </Toolbar>
