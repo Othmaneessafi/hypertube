@@ -58,11 +58,9 @@ export default function Signup(props) {
       <Grid
         container
         className="signupContainer"
-        // justify="center"
         
       >
-        <Grid item lg={2} ></Grid>
-        <Grid item xs={11} lg={7} container className="logupContainer">
+        <Grid item sm={12} lg={7} container className="logupContainer">
           <Grid
             item
             container
@@ -74,7 +72,7 @@ export default function Signup(props) {
           >
             <Grid
               item
-              xs={12}
+              sm={12}
               lg={6}
               container
               direction="column"

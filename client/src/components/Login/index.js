@@ -27,7 +27,7 @@ export default function signin(props) {
         // justify="center"
         // alignItems="center"
       >
-        <Grid item xs={11} lg={4} container className="loginContainer">
+        <Grid item sm={11} lg={4} container className="loginContainer">
           <Grid
             item
             container
@@ -39,7 +39,7 @@ export default function signin(props) {
           >
             <Grid
               item
-              xs={12}
+              sm={12}
               lg={6}
               container
               direction="column"

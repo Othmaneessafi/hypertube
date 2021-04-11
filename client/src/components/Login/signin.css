@@ -37,12 +37,6 @@
   border-radius: 30px;
 }
 
-.loginImage {
-  width: 70%;
-  height: auto;
-  animation: fadeIn 1s;
-  transition: width 1s;
-}
 
 .loginImageContainer:hover .loginImage{
   width: 90%;
@@ -75,6 +69,7 @@
 
 .logo {
   color: white;
+  font-size: auto!important;
 }
 
 .loginInputLabel {
@@ -85,18 +80,8 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .loginImageContainer {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    padding: 30px!important;
-  }
-  
+
   .loginInputContainer {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
     padding: 30px!important;
   }
 }

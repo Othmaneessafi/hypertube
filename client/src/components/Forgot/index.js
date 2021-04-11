@@ -36,7 +36,7 @@ export default function forgot(props) {
               justify="center"
               alignItems="center"
             >
-              <Link to="/browsing" style={{ textDecoration: "none" }}>
+              <Link to="/" style={{ textDecoration: "none" }}>
                 <h1 className="logo">HYPERTUBE</h1>
               </Link>
               <h3 className="message">Please enter your email</h3>
