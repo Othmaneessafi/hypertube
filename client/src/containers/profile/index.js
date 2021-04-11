@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
 import { reduxForm } from 'redux-form';
 import Profile from '../../components/profile';
-import { editInfo ,sendImage} from '../../actions/profileAction';
+import { editInfo } from '../../actions/profileAction';
 
 
 const validate = (values) => {
     const errors = {};
     const requiredFields = [
         "firstname",
-        "lastname",
+        "lastname", 
         "username",
         "email",
     ];
@@ -48,7 +48,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
     "editInfo": editInfo,
-    "sendImage" :sendImage
 };
 const mergeProps = (stateProps, dispatchProps, otherProps) => ({
     ...stateProps,
@@ -57,6 +56,7 @@ const mergeProps = (stateProps, dispatchProps, otherProps) => ({
     
     
     "handleSubmit": otherProps.handleSubmit((values) => {
+        console.log(values);
         dispatchProps.editInfo(values);
         delete values.password;
         delete values.confirmPassword;
