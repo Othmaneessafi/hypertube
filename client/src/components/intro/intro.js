@@ -10,10 +10,10 @@ export default function intro() {
     <>
       <Grid container className="introContainer">
         <Grid container item xs={12}>
-          <Grid item lg={2}>
+          <Grid item lg={2} xs={11}>
             <h1 className="logo">Hypertube</h1>
           </Grid>
-          <Grid item lg={9}></Grid>
+          <Grid item lg={9} xs={1}></Grid>
           <Grid item lg={1}>
             <Link to="/login" style={{ textDecoration: "none" }}>
               <Button
@@ -33,7 +33,7 @@ export default function intro() {
               shows, and more.
             </h1>
           </Grid>
-          <Grid item lg={4} className="descriptionContainer">
+          <Grid item lg={4}  className="descriptionContainer">
           <Link to="/register" style={{ textDecoration: "none" }}>
             <Button
               color="secondary"
