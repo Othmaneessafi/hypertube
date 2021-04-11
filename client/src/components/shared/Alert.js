@@ -11,6 +11,7 @@ const sharedAlert = (props) => {
   if (text === "") return <></>;
   return (
     <>
+    {console.log('ha hona')}
     <Alert severity={color} style={{
         position: "absolute",
         left: "0",
