@@ -11,6 +11,7 @@ const upload = require('./controllers/uploadFile')
 
 
 const app = express();
+app.use("/subtitles", express.static("./subtitles"));
 app.use(express.static('pics'));
 //database connection
 const con = require('./Config/db_conn');

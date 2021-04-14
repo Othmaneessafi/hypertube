@@ -14,6 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Modal from '@material-ui/core/Modal';
 import "./navbar.css";
 import { Avatar } from "@material-ui/core";
+import Logo from '../../image/logo.png';
 
 const categories = [
   { value: "animation", label: "Animation" },
@@ -53,8 +54,8 @@ function NavBar(props) {
     <AppBar position="fixed" className="navbar">
       <Toolbar>
         <Grid container>
-          <Grid item lg={1}>
-            <h1>hypertube</h1>
+          <Grid item lg={1} alignItems="center" justifyContent="center" style={{paddingTop: "4px" }}>
+            <img src={Logo} style={{ width:'120%'}} />
           </Grid>
           <Grid item lg={4}></Grid>
           <Grid item container justify="center" alignItems="center" lg={2}>

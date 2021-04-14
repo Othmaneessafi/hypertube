@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { Field } from "redux-form";
 import renderField from "../shared/TextField";
 import Avatar from "@material-ui/core/Avatar";
-import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
+import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
+import Logo from "../../image/logo.png";
 
 export default function Signup(props) {
   const [imgUrl, setimgUrl] = useState(null);
@@ -39,7 +40,11 @@ export default function Signup(props) {
           </Avatar>
         )}
         <label htmlFor="icon-button-file">
-          <Button color="secondary" aria-label="upload picture" component="span">
+          <Button
+            color="secondary"
+            aria-label="upload picture"
+            component="span"
+          >
             <AddPhotoAlternateIcon style={{ width: "50px", height: "50px" }} />
           </Button>
         </label>
@@ -55,12 +60,8 @@ export default function Signup(props) {
   };
   return (
     <>
-      <Grid
-        container
-        className="signupContainer"
-        
-      >
-        <Grid item sm={12} lg={7} container className="logupContainer">
+      <Grid container className="signupContainer">
+        <Grid item sm={12} lg={7} container className="logupContainer" >
           <Grid
             item
             container
@@ -73,36 +74,46 @@ export default function Signup(props) {
             <Grid
               item
               sm={12}
-              lg={6}
+              lg={10}
               container
               direction="column"
               justify="center"
               alignItems="center"
-            >
-              <h1 className="logo">HYPERTUBE</h1>
+              style={{  paddingTop: '25px',paddingBottom: '20px'}}
+              >
+              <img src={Logo} style={{ width: "60%" }} />
               <Field name="picture" component={renderPicture} />
-              <Field
-                name="firstname"
-                className="logupInput"
-                color="secondary"
-                InputProps={{ className: "loginInput" }}
-                InputLabelProps={{ className: "loginInputLabel" }}
-                component={renderField}
-                label="First Name"
-                type="text"
-                rows="1"
-              />
-              <Field
-                name="lastname"
-                className="logupInput"
-                color="secondary"
-                InputProps={{ className: "loginInput" }}
-                InputLabelProps={{ className: "loginInputLabel" }}
-                component={renderField}
-                label="Last Name"
-                type="text"
-                rows="1"
-              />
+              <Grid container xs={12} lg={12} style={{padding: "0", margin : "0", width: "100%" , height: "100%"}}>
+                {/* <p>hello</p> */}
+                <Grid item xs={6} lg={6} style={{paddingRight: "5px", margin : "0"}}>
+                   {/* <p>hello</p> */}
+                  <Field
+                    name="firstname"
+                    className="logupInput"
+                    color="secondary"
+                    InputProps={{ className: "loginInput" }}
+                    InputLabelProps={{ className: "loginInputLabel" }}
+                    component={renderField}
+                    label="First Name"
+                    type="text"
+                    rows="1"
+                  />
+                </Grid>
+                <Grid item xs={6} lg={6} style={{paddingLeft: "5px", marginLeft : "0"}}>
+                   {/* <p>hello</p> */}
+                  <Field
+                    name="lastname"
+                    className="logupInput"
+                    color="secondary"
+                    InputProps={{ className: "loginInput" }}
+                    InputLabelProps={{ className: "loginInputLabel" }}
+                    component={renderField}
+                    label="Last Name"
+                    type="text"
+                    rows="1"
+                  />
+                </Grid>
+              </Grid>
               <Field
                 name="username"
                 className="logupInput"
@@ -113,6 +124,7 @@ export default function Signup(props) {
                 label="Username"
                 type="text"
                 rows="1"
+                style={{height: "100%"}}
               />
 
               <Field

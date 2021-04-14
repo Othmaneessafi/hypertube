@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import textField from "../shared/TextField";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { MDBIcon } from "mdbreact";
+import Logo from "../../image/logo.png";
 
 export default function signin(props) {
   const { handleSubmit, status, errors, registredStatus } = props;
@@ -46,7 +47,7 @@ export default function signin(props) {
               justify="center"
               alignItems="center"
             >
-              <h1 className="logo">hypertube</h1>
+              <img src={Logo} style={{ width: "100%" }} />
               <Field
                 name="username"
                 label="Username"

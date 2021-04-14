@@ -61,20 +61,24 @@ const sub = (subtitles) => {
   let subt = {
     ar: null,
     fr: null,
-    en: null,
+    en: null
   };
-  if (subtitles) {
-    for (var i = 0; i < subtitles.length; i++) {
-      if (subtitles[i].langShort == "ar")
-        subt.ar = "data:text/vtt;base64," + subtitles[i].fileName;
-      if (subtitles[i].langShort == "fr")
-        subt.fr = "data:text/vtt;base64," + subtitles[i].fileName;
-      if (subtitles[i].langShort == "en")
-        subt.en = "data:text/vtt;base64," + subtitles[i].fileName;
+  {if (subtitles) {
+    let subti = Object.keys(subtitles);
+    for (var i = 0; i < subti.length; i++) {
+      {console.log(subtitles)}
+
+      if (subtitles[subti[i]].langcode == 'ar')
+        subt.ar = "data:text/vtt;base64," + subtitles[subti[i]].fileName
+      if (subtitles[subti[i]].langcode == 'fr')
+        subt.fr = "data:text/vtt;base64," + subtitles[subti[i]].fileName
+      if (subtitles[subti[i]].langcode === 'en')
+        subt.en = "data:text/vtt;base64," + subtitles[subti[i]].fileName
     }
-  }
+  }}
+
   return subt;
-};
+}
 const ViewMovie = (props) => {
   const {
     user,
@@ -91,7 +95,7 @@ const ViewMovie = (props) => {
     handleVp,
     handleLogout
   } = props;
-  const subtitles = sub(movieDetails.subtitles);
+  const subtitles = sub(movieDetails.subtitles, movieDetails.imdb_id);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const quality = movieDetails.torrents;
   const classes = useStyles();
@@ -150,6 +154,7 @@ const ViewMovie = (props) => {
                       {isOpen && <Modal isOpen={isOpen} handleClose={handleClose}>
                           <video controls width="100%" height="100%">
                             <source src={"http://localhost:3001/streaming/" + hash} type="video/mp4" />
+                            {console.log(subtitles.en)}
                             {subtitles.ar && <track kind="subtitles" src={subtitles.ar} srcLang="ar" default={user.langue === "ar" ? true : false} />}
                             {subtitles.fr && <track kind="subtitles" src={subtitles.fr} srcLang="fr" default={user.langue === "fr" ? true : false} />}
                             {subtitles.en && <track kind="subtitles" src={subtitles.en} srcLang="en" default={user.langue === "en" ? true : false} />}
