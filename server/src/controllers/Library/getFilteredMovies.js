@@ -4,12 +4,13 @@ const getFilteredMovies = (filter) => {
         console.log("dkhqlllllllllll")
         const obj = {
             category: filter.category === null  ? '' : filter.category,
-            sortBy: filter.sortBy === null ? 'title' : filter.sortBy,
+            sortBy: filter.sortBy === null ? 'seeds' : filter.sortBy,
             orderPopCorn: filter.sortBy === null ? '1' : '-1',
-            orderYts: filter.sortBy === null ? 'asc' : 'desc',
+            orderYts: filter.sortBy === null ? 'desc' : 'asc',
         }
-        console.log(obj.category, 'category==============')
-        cloudscraper.get(`http://api.pctapi.com/list?sort=${obj.sortBy}&short=1&quality=720p,1080p,3d&page=${filter.page}&genre=${obj.category}`)
+        // console.log(obj.sortBy, 'category==============')
+        // console.log(filter.page)
+        cloudscraper.get(`http://api.pctapi.com/list?sort=${obj.sortBy}&short=1&cb=&quality=720p,1080p,3d&page=${filter.page}&genre=${obj.category}&order_by=${obj.orderYts}`)
         .then(resp => {
             let result1 = JSON.parse(resp);
             if(result1.MovieList.length > 0 )

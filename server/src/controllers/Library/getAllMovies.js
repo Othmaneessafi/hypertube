@@ -14,7 +14,7 @@ const getAllMovies = (filter) => {
             else
             {
                 console.log("here")
-                cloudscraper.get(`https://yts.unblocked4u.org/api/v2/list_movies.json/?limit=50&sort_by=download_count&sort=order_by=desc&page=${filter.page}`)
+                cloudscraper.get(`https://yts.megaproxy.info/api/v2/list_movies.json?limit=50&sort_by=download_count&order_by=desc&page=${filter.page}`)
                 .then(resp => {
                     let result2 = JSON.parse(resp);
                     if(result2.status === 'ok' && result2.data.movies.length > 0)

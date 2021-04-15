@@ -16,7 +16,7 @@ const getDate = (date) =>{
 
 getMovies = async (req, res) => {
     const seenMovies = await user.select("getAllSeenMovies");
-    for(var i =0; i < seenMovies.length; i++)
+    for(var i = 0; i < seenMovies.length; i++)
     {
         if(getDate(seenMovies[i].date))
         {
@@ -39,10 +39,16 @@ getMovies = async (req, res) => {
         else
         {
             if(filter.category === null && filter.sortBy === null){
+                // console.log("1-----------------------------------------")
+                // console.log(filter)
+                // console.log("1-----------------------------------------")
                 const data = await getAllMovies(filter);
                 res.send(data);
             }
-            else{
+            else {
+                // console.log("2-----------------------------------------")
+                // console.log(filter)
+                // console.log("2-----------------------------------------")
                 const data = await getFilteredMovies(filter);
                 res.send(data);
             }

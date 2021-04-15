@@ -6,6 +6,7 @@ const getSeenMovies = async (req,res) => {
     {
         try {
             const movies = await user.select("getSeenMovies",user_id)
+            console.log(movies)
             if(movies)
             {
                 res.send(movies)

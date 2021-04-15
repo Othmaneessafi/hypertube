@@ -66,7 +66,6 @@ export default function Signup(props) {
             item
             container
             xs={12}
-            lg={12}
             className="inputContainer"
             justify="center"
             alignItems="center"
@@ -83,7 +82,7 @@ export default function Signup(props) {
               >
               <img src={Logo} style={{ width: "60%" }} />
               <Field name="picture" component={renderPicture} />
-              <Grid container xs={12} lg={12} style={{padding: "0", margin : "0", width: "100%" , height: "100%"}}>
+              <Grid container item xs={12} lg={12} style={{padding: "0", margin : "0", width: "100%" , height: "100%"}}>
                 {/* <p>hello</p> */}
                 <Grid item xs={6} lg={6} style={{paddingRight: "5px", margin : "0"}}>
                    {/* <p>hello</p> */}

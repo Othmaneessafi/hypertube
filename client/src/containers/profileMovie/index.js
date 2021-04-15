@@ -21,17 +21,17 @@ const ViewMovieContainer = (props) => {
         getMovieData({ type: 'imdb', code: imdb });
         getSimilarMovie({ type: 'imdb', code: imdb });
         getComments({ type: 'imdb', code: imdb })
-    }, []);
+    }, [getMovieData, getSimilarMovie, getComments]);
     const handleWatch= (quality) => {
         let has = getHash(movieDetails.torrents,quality);
         const data ={
-            imdb : movieDetails.imdbID,
+            imdb : movieDetails.imdb_id,
             hash : has,
             user_id : user.id,
-            title : movieDetails.Title,
-            year : movieDetails.Year,
-            rating : movieDetails.imdbRating,
-            poster : movieDetails.Poster
+            title : movieDetails.title,
+            year : movieDetails.year,
+            rating : movieDetails.imdb_rating,
+            poster : movieDetails.imgs.poster
         }
         console.log(data)
         updateSeen(data)
@@ -45,7 +45,6 @@ const ViewMovieContainer = (props) => {
 
     const getHash = (data, quality) => {
         const url = data[quality].url;
-        console.log(data,'ur:llllllllll')
         const hash = url.substr(20, 40)
         return hash;
     }
@@ -60,8 +59,9 @@ const ViewMovieContainer = (props) => {
     const handleChangeComment = e => setComment(e.target.value);
 
     const handleAddComment = (form) => {
+        console.log(form,'gchgghchgcghcg-------------')
         form.preventDefault();
-        comment && comment.length < 50 && addComment({ code: movieDetails.imdbID, user_id: user.id, content: comment });
+        comment && comment.length < 50 && addComment({ code: movieDetails.imdb_id, user_id: user.id, content: comment });
         setComment("");
     }
 

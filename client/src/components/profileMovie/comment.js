@@ -14,7 +14,9 @@ import './index.css'
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
+    maxWidth: 500,
+    overflow: 'auto',
+    maxHeight: 250,
   },
   inline: {
     display: 'inline',
@@ -28,8 +30,8 @@ const Comments = (props) => {
   const { comments, handleAddComment, handleChangeComment, handleVp } = props;
   const classes = useStyles();
   return (
-    <>
-      <Typography color="textSecondary" variant="h4" >Comments </Typography>
+    <div style= {{display: 'flex', flexDirection: 'column', justifyContent : "center", alignContent: "center", alignItems : "center"}}>
+      <h1 className="movieInfos">Comments </h1>
       <List className={classes.root}>
         {comments && comments.length > 0 && comments.map((tile, index) => (
           <ListItem alignItems="flex-start" key={index}>
@@ -39,41 +41,42 @@ const Comments = (props) => {
               </IconButton>
             </ListItemAvatar>
             <ListItemText
-              primary={<Typography variant="h6">{tile.username}</Typography>}
+              primary={<h3 style={{ color: "whitesmoke"}}>{tile.username}</h3>}
               secondary={
-                <React.Fragment>
-                  <Typography
+                  <p
                     component="span"
                     variant="body1"
                     className={classes.inline}
-                    color="textPrimary"
+                    style={{ color: "grey"}}
                   >
                     {tile.content}
-                  </Typography>
-                </React.Fragment>
+                  </p>
               }
             />
           </ListItem>
         ))}
       </List>
-      {comments && comments.length === 0 && <p>No comments found</p>}
+      {comments && comments.length === 0 && <h3 style={{ color: "whitesmoke"}} >No comments found</h3>}
       <form onSubmit={handleAddComment}>
         <TextField
           className={classes.input}
           placeholder="Add comment ..."
           InputProps={{
+            className: "loginInput",
             'aria-label': 'description',
             'endAdornment': (
               <InputAdornment>
-                <Button type="submit">ADD</Button>
+                <Button type="submit" style={{color: "grey"}} >ADD</Button>
               </InputAdornment>
             )
           }}
+          InputLabelProps={{ className: "loginInputLabel" }}
           onChange={handleChangeComment}
           variant='outlined'
+          color="secondary"
         />
       </form>
-    </>
+    </div>
   )
 }
 

@@ -44,18 +44,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(props) {
   const {
-    initializeFilter,
     movies,
-    handleChangeSort,
-    handleChangeCategory,
-    handleChangeSearch,
-    handleSubmitSearch,
     handleMovie,
   } = props;
   const classes = useStyles();
-  const [filter, setFilter] = React.useState(false);
-  const [search, setSearch] = React.useState(false);
-  console.log(movies);
 
   const handleNotFound = (e) =>{
     e.target.src = 'https://images-na.ssl-images-amazon.com/images/I/41bLP6NzvKL.jpg';
@@ -63,12 +55,12 @@ export default function Home(props) {
 
   return (
     <>
-      <Navbar
+      {/* <Navbar
         handleChangeCategory={handleChangeCategory}
         handleChangeSearch={handleChangeSearch}
         handleSubmitSearch={handleSubmitSearch}
         handleChangeSort={handleChangeSort}
-      />
+      /> */}
       {movies.status !== "loading" && (
         <>
           <Grid container justify="center" className="moviesContainer">
@@ -86,7 +78,7 @@ export default function Home(props) {
               movies.movies.length > 0 &&
               movies.movies.map((element, index) => (
                 <React.Fragment key={index}>
-                  {(element.large_cover_image ) ||  (element.poster_big && element.poster_big !== 'not found' && element.poster_big !== 'images/posterholder.png') && (
+                  {(element.large_cover_image ) ||  (element.poster_big) && (
                       <Card className="card">
                         {console.log("dkhal")}
                         <div className="container">
@@ -105,10 +97,9 @@ export default function Home(props) {
                             >
                             {/* {console.log(element)} */}
                             <Grid item xs={12} className="text">
-                              <h1>
-                                {element.title ||
-                                  element.title +
-                                    (element.year && ` (${element.year})`)}
+                            <h1>
+                                {element.title.replace(/ *\([^)]*\) */g, "")} <br/> ({element.year})
+                                {/* alphabet = alphabet.replace(/H.*S/, 'HS') */}
                               </h1>
                             </Grid>
                             <Grid item xs={12} style={{ height: "25%" }}></Grid>
@@ -138,7 +129,7 @@ export default function Home(props) {
                     )}
                 </React.Fragment>
               ))}
-            {movies.movies && movies.movies.length === 0 && (
+            {!movies.movies && movies.movies.length === 0 && (
               <p className="noMovies">No movies found</p>
             )}
           </Grid>

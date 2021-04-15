@@ -21,6 +21,7 @@ import StarIcon from "@material-ui/icons/Star";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 const useStyles = makeStyles((theme) => ({
   gridList: {
     flexWrap: "nowrap",
@@ -262,6 +263,14 @@ const ViewMovie = (props) => {
                 xs={12}
                 style={{ zIndex: 2, textAlign: "center", padding: "10px" }}
               >
+                <Grid item xs={12}>
+                  <Comment
+                    handleVp={handleVp}
+                    handleChangeComment={handleChangeComment}
+                    handleAddComment={handleAddComment}
+                    comments={comments}
+                  />
+                </Grid>
                 {similarMovies && (
                   <Grid item xs={12}>
                     <h1 className="movieInfos">Similar movies</h1>
@@ -299,14 +308,6 @@ const ViewMovie = (props) => {
         </Grid>
       )}
       {movieDetails === "error" && Redirect(`http://localhost:3000/`)}
-       {/* <Grid item xs={12}>
-              <Comment
-                handleVp={handleVp}
-                handleChangeComment={handleChangeComment}
-                handleAddComment={handleAddComment}
-                comments={comments}
-              />
-            </Grid> */}
     </>
   );
 };

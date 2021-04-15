@@ -15,70 +15,89 @@ export default function Profile(props) {
     <>
       {console.log(user)}
       <Grid container className="profileContainer" justify="center" alignItems="center">
-          <Grid item lg={2} xs={12} className="profileImage">
+          <Grid item lg={2} sm={12} className="profileImage">
             <img
               src={`http://localhost:3001/${user.image}`}
               className="userImage"
             />
           </Grid>
-        <Grid item lg={8} xs={12} className="profileInfos">
+          <Grid item lg={2} xs={12}></Grid>
+        <Grid item lg={8} sm={12} className="profileInfos">
           <form>
             <Grid container justify="center" spacing={2}>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <FormLabel component="legend">Firstname</FormLabel>
                 <Field
                   name="firstname"
                   component={renderField}
                   type="text"
                   rows="1"
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <FormLabel component="legend">Lastname</FormLabel>
                 <Field
                   name="lastname"
                   component={renderField}
                   type="text"
                   rows="1"
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <FormLabel component="legend">Username</FormLabel>
                 <Field
                   name="username"
                   component={renderField}
                   type="text"
                   rows="1"
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <FormLabel component="legend">Email</FormLabel>
                 <Field
                   name="email"
                   component={renderField}
                   type="email"
                   rows="1"
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <FormLabel component="legend">New password</FormLabel>
                 <Field
                   name="password"
                   component={renderField}
                   type="password"
                   rows="1"
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <FormLabel component="legend">Confirm new password</FormLabel>
                 <Field
                   name="confirmPassword"
                   component={renderField}
                   type="password"
                   rows="1"
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
-              <Grid item xs={10}>
+              <Grid item xs={12} sm={10}>
                 <FormLabel component="legend">Langue</FormLabel>
                 <Field
                   component={RadioGroup}
@@ -89,6 +108,9 @@ export default function Profile(props) {
                     { title: "French", value: "fr" },
                     { title: "Arab", value: "ar" },
                   ]}
+                  InputProps={{ className: "loginInput" }}
+                  InputLabelProps={{ className: "loginInputLabel" }}
+                  color="secondary"
                 />
               </Grid>
               <Grid item container justify="center" xs={3}>

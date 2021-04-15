@@ -24,16 +24,6 @@
   }
 }
 
-.imageContainer {
-  background: rgb(254,107,139);
-  background: linear-gradient(143deg, rgba(254,107,139,1) 0%, rgba(255,137,91,1) 100%);
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-
 .inputContainer {
   background: rgb(65, 64, 65);
   background: linear-gradient(
@@ -76,5 +66,8 @@
   }
   .signupContainer {
     padding: 2%;
+  }
+  .logupContainer {
+    left: 0;
   }
 }

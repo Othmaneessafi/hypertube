@@ -15,6 +15,11 @@ import Modal from '@material-ui/core/Modal';
 import "./navbar.css";
 import { Avatar } from "@material-ui/core";
 import Logo from '../../image/logo.png';
+import List from '@material-ui/core/List';
+import { Link } from 'react-router-dom';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const categories = [
   { value: "animation", label: "Animation" },
@@ -36,7 +41,7 @@ const sortBy = [
   { label: "Title", value: "title" },
 ];
 function NavBar(props) {
-  const { handleProfileOpen, user, handleLogout, handleSubmitSearch, handleChangeSearch, handleChangeCategory, handleChangeSort} = props;
+  const { initializeFilter, handleProfileOpen, user, handleLogout, handleSubmitSearch, handleChangeSearch, handleChangeCategory, handleChangeSort,  handleKeyDown, HandleHome} = props;
   const [sort, setSort] = React.useState('none');
   const [category, setCategory] = React.useState('none');
 
@@ -49,13 +54,18 @@ function NavBar(props) {
     setCategory(event.target.value);
     handleChangeCategory(event.target.value);
   };
-
+  function myFunction(){
+    initializeFilter();
+    handleSubmitSearch()
+}
   return (
     <AppBar position="fixed" className="navbar">
       <Toolbar>
         <Grid container>
-          <Grid item lg={1} alignItems="center" justifyContent="center" style={{paddingTop: "4px" }}>
+          <Grid item lg={1}>
+          <Button onClick={HandleHome}>
             <img src={Logo} style={{ width:'120%'}} />
+            </Button>
           </Grid>
           <Grid item lg={4}></Grid>
           <Grid item container justify="center" alignItems="center" lg={2}>
@@ -65,10 +75,11 @@ function NavBar(props) {
               fullWidth
               
               onChange={handleChangeSearch}
+              onKeyPress ={handleKeyDown}
               InputProps={{ className: "loginInput",
               endAdornment: (
                 <InputAdornment>
-                    <SearchIcon style={{ cursor: 'pointer'}} onClick={handleSubmitSearch} />
+                    <SearchIcon style={{ cursor: 'pointer'}} onClick={myFunction}/>
                 </InputAdornment> )}}
               InputLabelProps={{ className: "loginInputLabel" }}
             />
@@ -120,6 +131,15 @@ function NavBar(props) {
             )}
           </Grid>
         </Grid>
+        <List>
+            {user && user.token && (
+              <Link to={'/watchList'} style={{ textDecoration: 'none', color: 'primary' }} >
+                <ListItem button>
+                  <ListItemIcon><VisibilityIcon color="secondary" /></ListItemIcon>
+                </ListItem>
+              </Link>
+            )}
+          </List>
       </Toolbar>
     </AppBar>
   );

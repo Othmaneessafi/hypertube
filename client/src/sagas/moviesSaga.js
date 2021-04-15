@@ -113,7 +113,7 @@ const getSimilarMovies =
         try {
             const token = yield select((state) => state.user.token);
             const response = yield call(request, {
-                "url": 'http://localhost:300/getSeenMovies',
+                "url": 'http://localhost:3001/getSeenMovies',
                 "data": data,
                 "method": "POST"
             },token);
