@@ -117,6 +117,13 @@ function NavBar(props) {
                 </MenuItem>
               ))}
             </TextField>
+            {user && user.token && (
+              <Link to={'/watchList'} style={{ textDecoration: 'none', color: 'primary' }} >
+                <ListItem button>
+                  <ListItemIcon><VisibilityIcon style={{ color: 'white'}} /></ListItemIcon>
+                </ListItem>
+              </Link>
+            )}
           </Grid>
           <Grid item lg={1}></Grid>
           <Grid item container justify="center" alignItems="center" lg={2}>
@@ -131,15 +138,6 @@ function NavBar(props) {
             )}
           </Grid>
         </Grid>
-        <List>
-            {user && user.token && (
-              <Link to={'/watchList'} style={{ textDecoration: 'none', color: 'primary' }} >
-                <ListItem button>
-                  <ListItemIcon><VisibilityIcon color="secondary" /></ListItemIcon>
-                </ListItem>
-              </Link>
-            )}
-          </List>
       </Toolbar>
     </AppBar>
   );

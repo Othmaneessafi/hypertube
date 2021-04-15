@@ -48,6 +48,7 @@ export default function Home(props) {
     handleMovie,
   } = props;
   const classes = useStyles();
+  console.log(movies);
 
   const handleNotFound = (e) =>{
     e.target.src = 'https://images-na.ssl-images-amazon.com/images/I/41bLP6NzvKL.jpg';
@@ -55,12 +56,6 @@ export default function Home(props) {
 
   return (
     <>
-      {/* <Navbar
-        handleChangeCategory={handleChangeCategory}
-        handleChangeSearch={handleChangeSearch}
-        handleSubmitSearch={handleSubmitSearch}
-        handleChangeSort={handleChangeSort}
-      /> */}
       {movies.status !== "loading" && (
         <>
           <Grid container justify="center" className="moviesContainer">
@@ -80,7 +75,6 @@ export default function Home(props) {
                 <React.Fragment key={index}>
                   {(element.large_cover_image ) ||  (element.poster_big) && (
                       <Card className="card">
-                        {console.log("dkhal")}
                         <div className="container">
                           <img
                             className="media"
@@ -91,15 +85,12 @@ export default function Home(props) {
                           <Grid
                             container
                             className="overlay"
-                            justify="center"
                             alignItems="center"
                             onClick={(e) => handleMovie(element)}
                             >
-                            {/* {console.log(element)} */}
                             <Grid item xs={12} className="text">
                             <h1>
                                 {element.title.replace(/ *\([^)]*\) */g, "")} <br/> ({element.year})
-                                {/* alphabet = alphabet.replace(/H.*S/, 'HS') */}
                               </h1>
                             </Grid>
                             <Grid item xs={12} style={{ height: "25%" }}></Grid>

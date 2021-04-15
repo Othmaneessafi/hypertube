@@ -54,11 +54,6 @@
     transition: transform .5s;
     
 }
-/* 
-.container:hover .card{
-    position: absolute;
-    width: 500px;
-} */
 
 .overlay {
     position: absolute;

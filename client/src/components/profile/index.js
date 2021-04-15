@@ -14,7 +14,7 @@ export default function Profile(props) {
   return (
     <>
       {console.log(user)}
-      <Grid container className="profileContainer" justify="center" alignItems="center">
+      <Grid container className="profileContainer" alignItems="center">
           <Grid item lg={2} sm={12} className="profileImage">
             <img
               src={`http://localhost:3001/${user.image}`}
