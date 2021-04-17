@@ -21,7 +21,7 @@ const edit_Info = function* edit_Info({ data }) {
     );
 
     if (response.data.result.valid) {
-      yield put(updateUserSuccess(response.data.uu));
+      yield put(updateUserSuccess(response.data.userUpdate));
       yield put(
         setAlertAction({
           text: "Updated Successfully",
@@ -58,8 +58,10 @@ const sendPictures = function* sendPictures({ data }) {
       token
     );
     const res = response.data;
+    console.log(res);
     if (res) {
       if (res.isValid === true) {
+        console.log(res.data);
         yield put(updateImage(res.data));
       } else if (!res.isValid) yield put(sendImageError(res.error));
     }

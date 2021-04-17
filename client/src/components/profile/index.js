@@ -14,7 +14,6 @@ export default function Profile(props) {
   const { user, handleSubmit, fileChangedHandler } = props;
   return (
     <>
-      {console.log(user)}
       <Grid container className="profileContainer" alignItems="center">
         <Grid item lg={2} sm={12} className="profileImage">
           <img

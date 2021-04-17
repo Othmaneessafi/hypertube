@@ -79,7 +79,7 @@ profileContainer = reduxForm({
 })(profileContainer);
 
 profileContainer = connect(
-    state => ({
+    state => (console.log(state),{
         initialValues: {
             firstname: state.user.firstname,
             lastname: state.user.lastname,

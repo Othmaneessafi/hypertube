@@ -1,5 +1,5 @@
 .profileContainer {
-  height:500px!important;
+  height: 500px!important;
   width: 1000px!important;
   padding: 2%;
   margin: 0;
@@ -15,6 +15,7 @@
 .userImage {
   border-radius: 30px;
   width: 350px;
+  height: 400px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
 }
