@@ -59,10 +59,10 @@ const ViewMovieContainer = (props) => {
     const handleChangeComment = e => setComment(e.target.value);
 
     const handleAddComment = (form) => {
-        console.log(form,'gchgghchgcghcg-------------')
         form.preventDefault();
         comment && comment.length < 50 && addComment({ code: movieDetails.imdb_id, user_id: user.id, content: comment });
-        setComment("");
+        setComment('');
+        // e.target.value = '';
     }
 
     const handleViewClose = () => {
@@ -80,7 +80,7 @@ const ViewMovieContainer = (props) => {
                 user={user}
                 movieDetails={movieDetails} hash={hash} isOpen={isOpen} handleClose={handleClose}
                 handleWatch={handleWatch} similarMovies={similarMovies} handleMovie={handleMovie}
-                comments={comments} handleAddComment={handleAddComment} handleChangeComment={handleChangeComment}
+                comments={comments} comment={comment} handleAddComment={handleAddComment} handleChangeComment={handleChangeComment}
                 handleVp={handleVp} handleLogout={handleLogout}
             />
             {profile.open &&

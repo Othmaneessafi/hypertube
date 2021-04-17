@@ -61,7 +61,7 @@ export default function Signup(props) {
   return (
     <>
       <Grid container className="signupContainer">
-        <Grid item sm={12} lg={7} container className="logupContainer" >
+        <Grid item sm={12} lg={7} container className="logupContainer">
           <Grid
             item
             container
@@ -78,14 +78,30 @@ export default function Signup(props) {
               direction="column"
               justify="center"
               alignItems="center"
-              style={{  paddingTop: '25px',paddingBottom: '20px'}}
-              >
-              <img src={Logo} style={{ width: "60%" }} />
+              style={{ paddingTop: "25px", paddingBottom: "20px" }}
+            >
+                <img src={Logo} style={{ width: "50%" }} />
               <Field name="picture" component={renderPicture} />
-              <Grid container item xs={12} lg={12} style={{padding: "0", margin : "0", width: "100%" , height: "100%"}}>
+              <Grid
+                container
+                item
+                xs={12}
+                lg={12}
+                style={{
+                  padding: "0",
+                  margin: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
                 {/* <p>hello</p> */}
-                <Grid item xs={6} lg={6} style={{paddingRight: "5px", margin : "0"}}>
-                   {/* <p>hello</p> */}
+                <Grid
+                  item
+                  xs={6}
+                  lg={6}
+                  style={{ paddingRight: "5px", margin: "0" }}
+                >
+                  {/* <p>hello</p> */}
                   <Field
                     name="firstname"
                     className="logupInput"
@@ -98,8 +114,13 @@ export default function Signup(props) {
                     rows="1"
                   />
                 </Grid>
-                <Grid item xs={6} lg={6} style={{paddingLeft: "5px", marginLeft : "0"}}>
-                   {/* <p>hello</p> */}
+                <Grid
+                  item
+                  xs={6}
+                  lg={6}
+                  style={{ paddingLeft: "5px", marginLeft: "0" }}
+                >
+                  {/* <p>hello</p> */}
                   <Field
                     name="lastname"
                     className="logupInput"
@@ -123,7 +144,7 @@ export default function Signup(props) {
                 label="Username"
                 type="text"
                 rows="1"
-                style={{height: "100%"}}
+                style={{ height: "100%" }}
               />
 
               <Field

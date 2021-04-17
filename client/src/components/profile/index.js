@@ -8,20 +8,31 @@ import { Field } from "redux-form";
 import renderField from "../shared/TextField";
 import { Avatar } from "@material-ui/core";
 import RadioGroup from "../shared/RadioGroup";
+import AddAPhotoRoundedIcon from "@material-ui/icons/AddAPhotoRounded";
 
 export default function Profile(props) {
-  const { user, handleSubmit } = props;
+  const { user, handleSubmit, fileChangedHandler } = props;
   return (
     <>
       {console.log(user)}
       <Grid container className="profileContainer" alignItems="center">
-          <Grid item lg={2} sm={12} className="profileImage">
-            <img
-              src={`http://localhost:3001/${user.image}`}
-              className="userImage"
-            />
-          </Grid>
-          <Grid item lg={2} xs={12}></Grid>
+        <Grid item lg={2} sm={12} className="profileImage">
+          <img
+            src={`http://localhost:3001/${user.image}`}
+            className="userImage"
+          />
+          <input
+            accept="image/*"
+            id="icon-button-file"
+            type="file"
+            style={{ display: 'none'}}
+            onChange={(event) => fileChangedHandler(event)}
+          />
+          <label htmlFor="icon-button-file">
+            <AddAPhotoRoundedIcon color="secondary" />
+          </label>
+        </Grid>
+        <Grid item lg={2} xs={12}></Grid>
         <Grid item lg={8} sm={12} className="profileInfos">
           <form>
             <Grid container justify="center" spacing={2}>

@@ -3,6 +3,7 @@ import "./index.css";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import Logo from "../../image/logo.png";
 
 export default function confirmatinon(props) {
   return (
@@ -12,14 +13,15 @@ export default function confirmatinon(props) {
         className="errorContainer"
         justify="center"
         alignItems="center"
+        style={{ height: "80vh" }}
       >
-        <Grid item xs={7} container className="logupContainer">
+        <Grid item lg={3} sm={4} xs={10} container className="confirmeContainer">
           <Grid
             item
             container
             xs={12}
-            lg={6}
-            className="inputContainer"
+            lg={12}
+            className="confirmeinputContainer"
             justify="center"
             alignItems="center"
           >
@@ -32,19 +34,18 @@ export default function confirmatinon(props) {
               justify="center"
               alignItems="center"
             >
-              <h1 className="logo">HYPERTUBE</h1>
-              <h3 className="message">
-                You email verif successfully. please click the link below to
-                login.
-              </h3>
-              <Link
-                to="/signin"
-                style={{ textDecoration: "none" }}
+              <Link to="/login" style={{ textDecoration: "none", display: 'flex', justifyContent: "center" }}>
+                <img src={Logo} alt="logo" style={{ width: "70%" }} />
+              </Link>
+              <h3
+                className="message"
+                style={{ color: "white", padding: "50px", textAlign: "center" }}
               >
-                <Button
-                  variant="contained"
-                  className="logupBtn"
-                >
+                You verify you email successfully. please click the link below
+                to login.
+              </h3>
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Button variant="contained" className="logupBtn">
                   Login
                 </Button>
               </Link>

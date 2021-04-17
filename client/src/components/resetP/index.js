@@ -5,6 +5,7 @@ import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import textField from "../shared/TextField";
+import Logo from "../../image/logo.png";
 
 export default function reset(props) {
   const { handleSubmit } = props;
@@ -16,6 +17,7 @@ export default function reset(props) {
         className="errorContainer"
         justify="center"
         alignItems="center"
+        style={{ height: '80vh'}}
       >
         <Grid item xs={11} lg={3} container className="loginContainer">
           <Grid
@@ -36,10 +38,8 @@ export default function reset(props) {
               justify="center"
               alignItems="center"
             >
-              <Link to="/browsing" style={{ textDecoration: "none" }}>
-                <h1 className="logo">MATCHA</h1>
-              </Link>
-              <h3 className="message">Please enter your new password</h3>
+              <img src={Logo} alt="logo" style={{ width: "70%" }} />
+              <h3 className="message" style={{ textAlign: 'center', color: 'white'}}>Please enter your new password</h3>
               <Field
                 name="password"
                 label="New Password"
@@ -63,7 +63,7 @@ export default function reset(props) {
               <div style={{ height: 30 }} />
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className="loginBtn"
                 type="submit"
                 value="ok"

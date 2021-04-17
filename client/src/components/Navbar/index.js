@@ -64,7 +64,7 @@ function NavBar(props) {
         <Grid container>
           <Grid item lg={1}>
           <Button onClick={HandleHome}>
-            <img src={Logo} style={{ width:'120%'}} />
+            <img src={Logo} style={{ width:'100%'}} />
             </Button>
           </Grid>
           <Grid item lg={4}></Grid>

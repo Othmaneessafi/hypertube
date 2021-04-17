@@ -5,6 +5,7 @@ import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import textField from "../shared/TextField";
+import Logo from "../../image/logo.png"
 
 export default function forgot(props) {
   const { handleSubmit } = props;
@@ -16,8 +17,9 @@ export default function forgot(props) {
         className="errorContainer"
         justify="center"
         alignItems="center"
+        style={{ height: "80vh" }}
       >
-        <Grid item xs={11} lg={3} container className="loginContainer">
+        <Grid item xs={11} lg={3} container className="forgotContainer">
           <Grid
             item
             container
@@ -36,10 +38,10 @@ export default function forgot(props) {
               justify="center"
               alignItems="center"
             >
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <h1 className="logo">HYPERTUBE</h1>
+              <Link to="/login" style={{ textDecoration: "none", display: 'flex', justifyContent: "center" }}>
+                <img src={Logo} alt="logo" style={{width: "70%"}} />
               </Link>
-              <h3 className="message">Please enter your email</h3>
+              <h3 className="message" style={{ color: 'white', textAlign: 'center' }}>Please enter your email</h3>
               <Field
                 name="email"
                 label="Email"

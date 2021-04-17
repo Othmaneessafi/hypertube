@@ -29,9 +29,10 @@
 }
 
 .movieLogo {
-    color: white;
-    padding: 30px;
-    font-size: 60px!important;
+    /* color: white; */
+    padding: 70px;
+    width : 13%; 
+    /* font-size: 60px!important; */
 }
 
 .movieLogout {
@@ -41,9 +42,28 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1440px) {
     .movieLogo {
-        font-size: 20px !important;
+        padding-left : 0px;
+        margin-left : 3px;
+        padding-top: 40px;
+        width : 20%; 
+    }
+
+    .movieLogout {
+        font-size: 25px !important;
+        padding-top: 45px!important;
+    }
+}
+
+
+
+@media screen and (max-width: 425px) {
+    .movieLogo {
+        padding-left : 0px;
+        margin-left : 3px;
+        padding-top: 40px;
+        width : 40%; 
     }
 
     .movieLogout {

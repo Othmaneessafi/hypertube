@@ -21,6 +21,7 @@ import StarIcon from "@material-ui/icons/Star";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Logo from '../../image/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   gridList: {
@@ -129,7 +130,7 @@ const ViewMovie = (props) => {
               <Grid container item xs={12} className="CoverShading">
                   <Grid item xs={11}>
                     <Link to="/Home" style={{ textDecoration: "none" }}>
-                      <h1 className="movieLogo">hypertube</h1>
+                      <img src={Logo} className="movieLogo" />
                     </Link>
                   </Grid>
                   <Grid item xs={1}>

@@ -25,7 +25,7 @@ const upload = multer({
 });
 
 app.post('/upload', upload.single('files'), async (req, res) => {
-
+  console.log('ha ana11111111')
   user_id = req.body.user_id;
   file = req.file;
 
@@ -38,7 +38,7 @@ app.post('/upload', upload.single('files'), async (req, res) => {
   }
 
   try {
-    await Jimp.read('./public/images/'+file.filename);
+    await Jimp.read('./pics'+file.filename);
     try {
        await user.update("UpdateImage",[file.filename,user_id])
        res.send({isValid : true,data : file.filename})

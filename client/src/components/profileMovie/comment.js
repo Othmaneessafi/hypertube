@@ -22,12 +22,23 @@ const useStyles = makeStyles(theme => ({
     display: 'inline',
   },
   input: {
-    width: 360,
+    width: 470,
+    [theme.breakpoints.down(400 + theme.spacing(3) * 2)]: {
+      // marginTop: theme.spacing(8),
+      // marginBottom: theme.spacing(6),
+      // padding: theme.spacing(3),
+      width: 300,
+    },
   }
 }));
 
+const resetComment = (e) => {
+  console.log(e.target.value)
+  e.target.value = '';
+}
+
 const Comments = (props) => {
-  const { comments, handleAddComment, handleChangeComment, handleVp } = props;
+  const { comments, handleAddComment, handleChangeComment, handleVp, comment } = props;
   const classes = useStyles();
   return (
     <div style= {{display: 'flex', flexDirection: 'column', justifyContent : "center", alignContent: "center", alignItems : "center"}}>
@@ -40,18 +51,10 @@ const Comments = (props) => {
                 <Avatar alt={tile.username} src={`http://localhost:3001/${tile.image}`} />
               </IconButton>
             </ListItemAvatar>
-            <ListItemText
+            <ListItemText style={{color: 'white'}}
               primary={<h3 style={{ color: "whitesmoke"}}>{tile.username}</h3>}
-              secondary={
-                  <p
-                    component="span"
-                    variant="body1"
-                    className={classes.inline}
-                    style={{ color: "grey"}}
-                  >
-                    {tile.content}
-                  </p>
-              }
+              secondary={<h6 style={{color: 'white'}}>{tile.content}</h6>}
+                
             />
           </ListItem>
         ))}
@@ -61,6 +64,7 @@ const Comments = (props) => {
         <TextField
           className={classes.input}
           placeholder="Add comment ..."
+          value={comment}
           InputProps={{
             className: "loginInput",
             'aria-label': 'description',

@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link, Redirect } from "react-router-dom";
 import Logo from "../../image/logo.png";
+import Fab from "@material-ui/core/Fab";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "./index.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,19 +23,18 @@ export default function Home(props) {
   const classes = useStyles();
   return (
     <>
-      <Grid container justify="center">
-        <Grid container item xs={12} className="CoverShading">
+        <Grid container item xs={12}>
           <Grid container item xs={12}>
             <Grid item xs={11}>
               <Link to="/Home" style={{ textDecoration: "none" }}>
-                <img src={Logo} style={{ width: "10%", margin: "3%" }} />
+                <img src={Logo}  className="movieLogo" />
               </Link>
             </Grid>
             <Grid item xs={1}>
               <ExitToAppIcon className="movieLogout" onClick={handleLogout} />
             </Grid>
           </Grid>
-          <Grid item xs={12}>
+          <Grid container justify="center">
             {console.log(movies)}
             {movies &&
               movies !== "loading" &&
@@ -67,7 +68,6 @@ export default function Home(props) {
             )}
           </Grid>
         </Grid>
-      </Grid>
     </>
   );
 }

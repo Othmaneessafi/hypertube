@@ -10,7 +10,7 @@ import { MDBIcon } from "mdbreact";
 import Logo from "../../image/logo.png";
 
 export default function signin(props) {
-  const { handleSubmit, status, errors, registredStatus } = props;
+  const { handleSubmit, status, errors, registredStatus} = props;
   const handleAuth2 = async () => {
     window.open("http://localhost:3001/auth/github", "_parent");
   };
@@ -47,7 +47,7 @@ export default function signin(props) {
               justify="center"
               alignItems="center"
             >
-              <img src={Logo} style={{ width: "100%" }} />
+              <img src={Logo} style={{ width: "70%", marginBottom: '50px' }} />
               <Field
                 name="username"
                 label="Username"

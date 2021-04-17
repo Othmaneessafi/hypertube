@@ -35,7 +35,7 @@ const mergeProps = (stateProps, dispatchProps, otherProps) => ({
     ...otherProps,
     "handleSubmit" : otherProps.handleSubmit((form) => {
         dispatchProps.loginAction(form);
-    })
+    }),
 });
 
 const connectedLoginContainer = connect(mapStateToProps, mapDispatchToProps,mergeProps)(Login);

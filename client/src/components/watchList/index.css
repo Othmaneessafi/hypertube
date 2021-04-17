@@ -58,3 +58,33 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 1440px) {
+    .movieLogo {
+        padding-left : 0px;
+        margin-left : 3px;
+        padding-top: 40px;
+        width : 20%; 
+    }
+
+    .movieLogout {
+        font-size: 25px !important;
+        padding-top: 45px!important;
+    }
+}
+
+
+
+@media screen and (max-width: 425px) {
+    .movieLogo {
+        padding-left : 0px;
+        margin-left : 3px;
+        padding-top: 40px;
+        width : 40%; 
+    }
+
+    .movieLogout {
+        font-size: 20px !important;
+        padding-top: 45px!important;
+    }
+}
