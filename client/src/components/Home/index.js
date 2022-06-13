@@ -73,7 +73,8 @@ export default function Home(props) {
               movies.movies.length > 0 &&
               movies.movies.map((element, index) => (
                 <React.Fragment key={index}>
-                  {(element.large_cover_image ) ||  (element.poster_big) && (
+                  {console.log(element.large_cover_image)}
+                  {(element.large_cover_image ) && (
                       <Card className="card">
                         <div className="container">
                           <img
