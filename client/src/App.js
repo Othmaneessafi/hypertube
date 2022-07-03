@@ -10,7 +10,7 @@ function App() {
       {/* <Navbar /> */}
       <Alert />
       <Routes />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

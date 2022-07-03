@@ -1,9 +1,6 @@
 .introContainer {
-    background-image: url(./img/bg2.png);
-    width: 100%;
-    height: 100vh;
+    background-image: url(./img/bg.png);
     background-size: cover;
-    padding: 50px;
 }
 
 .descriptionContainer {

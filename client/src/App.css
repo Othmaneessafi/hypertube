@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   height: 100%;
   width: 100%;
@@ -12,7 +16,7 @@ body {
   /* overflow: hidden; */
   background-size: fill;
   /* overflow-x: hidden; */
-  font-family: "Cardo", serif;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif; 
 }
 body::-webkit-scrollbar{
   display: none;
