@@ -1,9 +1,6 @@
 .signupContainer {
-  height: 100vh;
-  background-image: url(./img/bg1.jpg);
+  background-image: url(./img/bg1.jpeg);
   background-size: cover;
-  padding: 8%;
-  padding-left: 50%;
 }
 
 .logupContainer {

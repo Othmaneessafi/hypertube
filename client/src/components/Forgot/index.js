@@ -4,14 +4,56 @@ import Grid from "@material-ui/core/Grid";
 import { Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import textField from "../shared/TextField";
-import Logo from "../../image/logo.png"
+import renderField from "../shared/TextField";
+import Logo from "../../image/logo.png";
 
 export default function forgot(props) {
   const { handleSubmit } = props;
 
   return (
-    <>
+    <main className="forgotContainer w-full h-screen flex items-center justify-start p-10 ">
+      <div className="w-full flex justify-center">
+        <div className="w-1/3 bg-bgBlack rounded-3xl flex flex-col items-center p-6 shadow-lg shadow-bgBlack">
+          <div className="logo w-full flex justify-center mb-6">
+            <img src={Logo} className="w-1/2" />
+          </div>
+          <div className="fields w-full flex flex-col items-center justify-center">
+            <Field
+              name="email"
+              label="Email"
+              type="email"
+              className="logupInput"
+              component={renderField}
+            />
+          </div>
+          <div className="w-full flex justify-center">
+            <button
+              className="bg-primaryRed py-2 w-2/3 rounded-md text-2xl text-center text-primaryWhite flex justify-center my-4 items-center"
+              onClick={handleSubmit}
+            >
+              Send email
+            </button>
+          </div>
+          <div className="w-full flex justify-center">
+            <span className="text-secondary text-center">
+              return to login page{" "}
+              <Link
+                to="/register"
+                style={{ textDecoration: "none" }}
+                className="text-primaryRed"
+              >
+                Sign In
+              </Link>
+            </span>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+{
+  /* <>
       <Grid
         container
         className="errorContainer"
@@ -68,6 +110,5 @@ export default function forgot(props) {
           </Grid>
         </Grid>
       </Grid>
-    </>
-  );
+    </> */
 }
