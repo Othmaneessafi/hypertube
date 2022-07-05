@@ -74,7 +74,7 @@ function NavBar(props) {
                 <div className="cursor-pointer">{user.username}</div>
               </div>
               <div style={{ backgroundColor: "", marginRight: "0px" }}>
-                <img className="flex justify-center items-center h-12 w-12 bg-red-700 rounded-full"
+                <img className="flex justify-center items-center h-10 w-10 bg-red-700 rounded-full"
                   src={`http://localhost:3001/${user.image}`} />
               </div>
             </div>
@@ -82,26 +82,26 @@ function NavBar(props) {
           {/* <ExitToAppIcon onClick={handleLogout} /> */}
         </div>
       </div>
-      <div className={open ? "fixed top-0 left-0 h-full w-64 bg-black z-40 translate-x-0 ease-in-out duration-300" : "fixed top-0 left-0 h-full w-20 bg-[rgba(0,0,0,.2)] translate ease-in-out duration-300"}>
+      <div className={open ? "fixed top-0 left-0 h-full w-64 bg-black z-40" : "fixed top-0 left-0 h-full w-20 bg-[rgba(0,0,0,.2)]"}>
         <div className="absolute top-0 left-0 w-full h-28 p-1  flex flex-col justify-center items-center">
           {open ? <img className="h-12" src={Logo} /> : <img src={Hlogo} />}
         </div>
-        <div className={open ? "absolute top-[20vh] left-0 w-full h-auto flex flex-col justify-center items-center" :  "absolute top-1/4 left-0 w-full h-auto flex flex-col justify-center items-center"}>
+        <div className={open ? "absolute top-[20vh] left-0 w-full h-auto flex flex-col justify-center items-center" : "absolute top-1/4 left-0 w-full h-auto flex flex-col justify-center items-center"}>
           {open ?
-          <>
-          <div className="w-full flex flex-row pl-10 p-4 justify-start items-center  text-primaryRed text-xl"><span className="flex flex-row items-start"><Icon icon="ant-design:home-filled" className="text-primaryRed h-7 w-7  mr-2" />Home</span></div>
-          <div className="w-full  flex flex-row pl-6 p-4 justify-start items-center text-secondary text-xl"><div className="bg-bg  px-4 w-[90%] py-2 rounded-full flex flex-row items-end"><Icon icon="akar-icons:search" className="text-secondary h-6 w-6 mr-2" />Search</div></div>
-          <div className="w-full flex flex-row pl-10 justify-start items-center text-primaryWhite text-xl  p-2">Sort by</div>
-  7       <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="bi:calendar-date-fill" className="text-secondary h-6 w-6 mr-2" />Year</span></div>
-          <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="akar-icons:statistic-up" className="text-secondary h-6 w-6 mr-2" />Popularity</span></div>
-          <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="ant-design:clock-circle-filled" className="text-secondary h-6 w-6 mr-2" />Date added</span></div>
-          <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="ic:baseline-title" className="text-secondary h-6 w-6 mr-2" />Title</span></div>
-          <div className="w-full flex flex-row pl-10 justify-start items-center text-primaryWhite text-xl  p-2">User</div>
-          <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="ant-design:home-filled" className="text-secondary h-8 w-7 mr-2" />Watchlist</span></div>
-          </>
+            <>
+              <div className="w-full flex flex-row pl-10 p-4 justify-start items-center  text-primaryRed text-xl"><span className="flex flex-row items-start"><Icon icon="ant-design:home-filled" className="text-primaryRed h-7 w-7  mr-2" />Home</span></div>
+              <div className="w-full  flex flex-row pl-6 p-4 justify-start items-center text-secondary text-xl"><div className="bg-bg  px-4 w-[90%] py-2 rounded-full flex flex-row items-end"><Icon icon="akar-icons:search" className="text-secondary h-6 w-6 mr-2" />Search</div></div>
+              <div className="w-full  flex flex-row pl-10 justify-start items-center text-primaryWhite text-xl  p-2">Sort by</div>
+              <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="bi:calendar-date-fill" className="text-secondary h-6 w-6 mr-2" />Year</span></div>
+              <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="akar-icons:statistic-up" className="text-secondary h-6 w-6 mr-2" />Popularity</span></div>
+              <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="ant-design:clock-circle-filled" className="text-secondary h-6 w-6 mr-2" />Date added</span></div>
+              <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-3"><span className="flex flex-row items-end"><Icon icon="ic:baseline-title" className="text-secondary h-6 w-6 mr-2" />Title</span></div>
+              <div className="w-full flex flex-row  pl-10 justify-start items-center text-primaryWhite text-xl  p-2">User</div>
+              <div className="w-full flex flex-row pl-20 justify-start items-center text-secondary text-xl  p-2"><span className="flex flex-row items-end"><Icon icon="ant-design:home-filled" className="text-secondary h-8 w-7 mr-2" />Watchlist</span></div>
+            </>
             : <div className="flex flex-col gap-10"><Icon icon="ant-design:home-filled" className="text-primaryRed h-8 w-8" />
-            <Icon icon="akar-icons:search" className="text-primaryWhite h-7 w-7" />
-            <Icon icon="fa:sort" className="text-primaryWhite h-7 w-7" /></div>}
+              <Icon icon="akar-icons:search" className="text-primaryWhite h-7 w-7" />
+              <Icon icon="fa:sort" className="text-primaryWhite h-7 w-7" /></div>}
         </div>
         <buton className={open ? "absolute cursor-pointer bottom-0 left-0 w-full h-28  flex justify-end p-6 items-center" : "absolute cursor-pointer bottom-0 left-0 w-full h-28  flex justify-center items-center"} onClick={() => {
           setOpen(!open)
