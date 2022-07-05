@@ -5,8 +5,17 @@ import { request } from './helper';
 import {RegisterError, RegisterUserSuccess, EmailConfirmationSuccess, EmailConfirmationError} from "../actions/registerAction";
 import axios from 'axios'
 
+  const serializeForm = (form) => {
+    const data = {};
+    for (let element of form.keys()) {
+      data[element] = form.get(element);
+    }
+    return data;
+  }
+
 const inscription =
   function *inscription ({data}) {
+    data = serializeForm(data);
     try {
       const response = yield call(request, {
         "url": "http://localhost:3001/register",
@@ -19,10 +28,7 @@ const inscription =
         yield put(push("/login"));
       }
       else{
-        if(response.data.errPicture){
-          yield put(RegisterError(response.data.errPicture));
-        }
-        else if(response.data.errUsername && !response.data.errEmail){
+        if(response.data.errUsername && !response.data.errEmail){
           yield put(RegisterError(response.data.errUsername));
         }
         else if(response.data.errEmail && !response.data.errUsername){
