@@ -1,22 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import StarIcon from "@material-ui/icons/Star";
-import SearchSharpIcon from "@material-ui/icons/SearchSharp";
-import FilterListSharpIcon from "@material-ui/icons/FilterListSharp";
-import Fab from "@material-ui/core/Fab";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import TextField from "@material-ui/core/TextField";
-import Select from "react-select";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import { Button } from "@material-ui/core";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Navbar from "../../containers/Navbar";
 import "./home.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Icon } from '@iconify/react';
 
 const useStyles = makeStyles((theme) => ({
   upBtn: {
@@ -55,10 +42,9 @@ export default function Home(props) {
   }
 
   return (
-    <>
+    <main className="w-full h-full pl-24 pt-32" >
       {movies.status !== "loading" && (
-        <>
-          <Grid container justify="center" className="moviesContainer">
+          <div className="w-full h-full justify-center flex flex-wrap" >
             {/* <Fab
               className={classes.upBtn}
               color="secondary"
@@ -75,8 +61,41 @@ export default function Home(props) {
                 <React.Fragment key={index}>
                   {console.log(element.large_cover_image)}
                   {(element.large_cover_image ) && (
-                      <Card className="card">
-                        <div className="container">
+                      <div className="group relative overflow-hidden rounded-2xl shadow-sm shadow-secondary md:w-1/3  lg:w-1/6 h-1/3 mx-4 my-4">
+                          <img
+                            className=" w-full h-full "
+                            onError={handleNotFound}
+                            src={element.large_cover_image || element.poster_big}
+                            alt={element.title}
+                          />
+                          <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-t group-hover:flex items-end from-black hidden" >
+                            <div className="w-full h-full flex flex-col items-center p-4">
+                              <div className="w-full h-1/4" ></div>
+                              <div className="w-full h-2/4 flex justify-center items-center " >
+                                <span className="text-primaryRed cursor-pointer hover:scale-105" onClick={(e) => handleMovie(element)} >
+                                  <Icon icon="bi:play-circle-fill" width={70}  />
+                                </span>
+                              </div>
+                              <div className="w-full h-1/4 text-center flex flex-col items-center justify-center " >
+                                <span className="text-primaryWhite font-bold text-center" >
+                                  {element.title.replace(/ *\([^)]*\) */g, "")} ({element.year})
+                                </span>
+                                <span className="text-primaryWhite flex items-center justify-center w-full text-center" >
+                                  {(element.rating.percentage &&
+                                    (
+                                      (element.rating.percentage * 10) /
+                                      100
+                                    ).toFixed(1)) ||
+                                    (element.rating &&
+                                      (element.rating * 1).toFixed(1))}
+                                      <Icon icon="ant-design:star-filled" className="ml-1" />
+                                </span>
+                              </div>
+                              
+                              
+                            </div>
+                          </div>
+                        {/* <div className="container">
                           <img
                             className="media"
                             onError={handleNotFound}
@@ -90,9 +109,10 @@ export default function Home(props) {
                             onClick={(e) => handleMovie(element)}
                             >
                             <Grid item xs={12} className="text">
-                            <h1>
-                                {element.title.replace(/ *\([^)]*\) */g, "")} <br/> ({element.year})
-                              </h1>
+                            <h1> */}
+          
+        
+                              {/* </h1>
                             </Grid>
                             <Grid item xs={12} style={{ height: "25%" }}></Grid>
                             <Grid
@@ -116,22 +136,21 @@ export default function Home(props) {
                                   (element.rating * 1).toFixed(1))}
                             </Grid>
                           </Grid>
-                        </div>
-                      </Card>
+                        </div> */}
+                      </div>
                     )}
                 </React.Fragment>
               ))}
             {!movies.movies && movies.movies.length === 0 && (
               <p className="noMovies">No movies found</p>
             )}
-          </Grid>
-        </>
+          </div>
       )}
       {movies.status === "loading" && (
         <Grid className={classes.loading} container justify="center">
           <CircularProgress color ="secondary"/>
         </Grid>
       )}
-    </>
+    </main>
   );
 }
