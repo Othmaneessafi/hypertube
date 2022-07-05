@@ -59,7 +59,7 @@ export default function Home(props) {
       {movies.status !== "loading" && (
         <>
           <Grid container justify="center" className="moviesContainer">
-            <Fab
+            {/* <Fab
               className={classes.upBtn}
               color="secondary"
               size="medium"
@@ -68,7 +68,7 @@ export default function Home(props) {
               }}
             >
               <KeyboardArrowUpIcon />
-            </Fab>
+            </Fab> */}
             {movies.movies &&
               movies.movies.length > 0 &&
               movies.movies.map((element, index) => (
