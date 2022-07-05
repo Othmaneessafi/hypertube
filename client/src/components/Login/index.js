@@ -8,6 +8,7 @@ import renderField from "../shared/TextField";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { MDBIcon } from "mdbreact";
 import Logo from "../../image/logo.png";
+import { Icon } from '@iconify/react';
 
 export default function signin(props) {
   const { handleSubmit, status, errors, registredStatus } = props;
@@ -28,7 +29,17 @@ export default function signin(props) {
             <img src={Logo} className="w-1/2" />
           </div>
           <div className="fields w-full flex flex-col items-center justify-center">
-            
+            <div className="flex justify-center p-4 border-b border-secondary mb-4" >
+              <Button onClick={handleAuth2}>
+                <Icon icon="akar-icons:github-fill" width={40} color="#DAD8D8" />
+              </Button>
+              <Button onClick={handleAuth4} >
+                <Icon icon="akar-icons:google-contained-fill" width={40} color="#DAD8D8" />
+              </Button>
+              <Button onClick={handleAuth5} >
+                <Icon icon="akar-icons:facebook-fill" width={40} color="#DAD8D8" />
+              </Button>
+            </div>
             <Field
               name="username"
               className="logupInput"
