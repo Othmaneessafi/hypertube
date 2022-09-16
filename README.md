@@ -27,6 +27,25 @@ Users can also see the movies they have already watched.
 - Material-ui
 
 <hr>
+# Screenshots
+
+## Home Page
+![Homepage](https://user-images.githubusercontent.com/44867969/190638235-c7154206-811a-4e22-88bb-62f5a907bae0.png)
+
+## Login Page
+![Login](https://user-images.githubusercontent.com/44867969/190638322-1cea743c-640c-4c14-85a7-38ff6f6b98f3.png)
+
+## Browser Page
+![Browse Animation](https://user-images.githubusercontent.com/44867969/190638395-535797f8-9c53-4781-a065-33663fe542d9.png)
+
+## Movie Page
+![Movie Profile](https://user-images.githubusercontent.com/44867969/190638471-843a671a-1d09-4df8-8559-61c5a7cad71f.png)
+
+## Stream Page
+![Movie_Watch](https://user-images.githubusercontent.com/44867969/190638534-04b8051a-59b4-40ad-96f3-c5058d9713d7.png)
+
+
+<hr>
 
 > # How to run it ?
     cd client && npm install
