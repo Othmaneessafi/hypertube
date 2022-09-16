@@ -27,6 +27,7 @@ Users can also see the movies they have already watched.
 - Material-ui
 
 <hr>
+
 # Screenshots
 
 ## Home Page
