@@ -5,7 +5,7 @@ A streaming web application - 1337 school (42 network) project.
 
 > # Description
 After creating an account, either by the normal way or via Oauth with the following websites:
-- 42
+- Facebook
 - Google
 - Github
 
