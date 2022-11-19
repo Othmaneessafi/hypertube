@@ -60,8 +60,3 @@ Users can also see the movies they have already watched.
     cd client && serve -s build -l [PORT]
 <hr>
 
-> # Created By : 
--  Issam Zouiten
--  Chadi Naour
--  Othmane Es-safi
--  Salah Moudene
